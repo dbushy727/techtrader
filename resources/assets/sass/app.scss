@@ -1,2 +1,41 @@
 // @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
 
+@media (min-width: 979px) {
+
+  #midCol.affix-top {
+      position:fixed;
+      width:265px;
+      margin-right:10px;
+      
+  }
+  
+  #midCol.affix {
+      position:static;
+      width:100%;
+  }
+
+}
+
+@media (min-width: 767px) {
+  .affix,.affix-top {
+      position:fixed;
+  }
+}
+
+
+.product_body {
+    min-height: 15em;
+    position: relative;
+}
+
+.product_image {
+    margin: 0 auto;
+}
+
+.created_time {
+    font-weight: bold;
+    text-align: right;
+    margin: 1em 0 0;
+}
+
+

@@ -12,5 +12,23 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('all_products');
 });
+// Authentication routes...
+Route::get('auth/login', 'Auth\AuthController@getLogin');
+Route::post('auth/login', 'Auth\AuthController@postLogin');
+Route::get('auth/logout', 'Auth\AuthController@getLogout');
+
+// Registration routes...
+Route::get('auth/register', 'Auth\AuthController@getRegister');
+Route::post('auth/register', 'Auth\AuthController@postRegister');
+
+// Api Routes
+Route::resource('products', 'ProductController', ['only' => ['index', 'show', 'store', 'update', 'destroy']]);
+Route::get('user/products', ['uses'=> 'UserController@products', 'as' => 'user.products', 'middleware' => 'auth']);
+
+
+// UI Routes...
+Route::get('my-products', ['middleware' => 'auth', function () {
+    return view('user_products');
+}]);

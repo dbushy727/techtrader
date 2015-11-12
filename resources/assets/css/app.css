@@ -1,0 +1,18 @@
+.product_body {
+    min-height: 15em;
+    position: relative;
+}
+
+.product_image {
+    margin: 0 auto;
+}
+
+.created_time {
+    font-weight: bold;
+    text-align: right;
+    margin: 1em 0 0;
+}
+
+.login_panel {
+    margin-top: 5em;
+}
