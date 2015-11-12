@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\Http\Requests\ProductRequest;
 use App\Http\Controllers\Controller;
 use App\Product;
+use App\Category;
 
 class ProductController extends Controller
 {
@@ -18,7 +19,19 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return Product::all();
+        $products = Product::orderBy('created_at', 'desc')->take(50)->paginate();
+        return view('products.index', compact('products'));
+    }
+
+    /**
+     * Create a product
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        $categories = Category::lists('name', 'id');
+        return view('products.create', compact('categories'));
     }
 
     /**
@@ -41,7 +54,8 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        return Product::find($id);
+        $product =  Product::find($id);
+        return view('products.show', compact('product'));
     }
 
     /**

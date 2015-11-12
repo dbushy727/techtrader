@@ -560,4 +560,11 @@ table.dataTable thead .sorting:after {
 .login_panel {
     margin-top: 5em;
 }
+
+.create_product {
+    background-color: #eee;
+    border-radius: 0.3em;
+    padding: 2em;
+    margin-bottom: 1em;
+}
 /*# sourceMappingURL=all.css.map */

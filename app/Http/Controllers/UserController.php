@@ -13,6 +13,7 @@ class UserController extends Controller
 {
     public function products()
     {
-        return \Auth::user()->products;
+        $products =  \Auth::user()->products()->paginate();
+        return view('products.user', compact('products'));
     }
 }

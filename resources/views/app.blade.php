@@ -38,190 +38,68 @@
 
 	        <ul class="nav navbar-top-links navbar-right">
 	            <li class="dropdown">
-	                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-	                    <i class="fa fa-envelope fa-fw"></i>  <i class="fa fa-caret-down"></i>
-	                </a>
-	                <ul class="dropdown-menu dropdown-messages">
-	                    <li>
-	                        <a href="#">
-	                            <div>
-	                                <strong>John Smith</strong>
-	                                <span class="pull-right text-muted">
-	                                    <em>Yesterday</em>
-	                                </span>
-	                            </div>
-	                            <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...</div>
-	                        </a>
-	                    </li>
-	                    <li class="divider"></li>
-	                    <li>
-	                        <a href="#">
-	                            <div>
-	                                <strong>John Smith</strong>
-	                                <span class="pull-right text-muted">
-	                                    <em>Yesterday</em>
-	                                </span>
-	                            </div>
-	                            <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...</div>
-	                        </a>
-	                    </li>
-	                    <li class="divider"></li>
-	                    <li>
-	                        <a href="#">
-	                            <div>
-	                                <strong>John Smith</strong>
-	                                <span class="pull-right text-muted">
-	                                    <em>Yesterday</em>
-	                                </span>
-	                            </div>
-	                            <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...</div>
-	                        </a>
-	                    </li>
-	                    <li class="divider"></li>
-	                    <li>
-	                        <a class="text-center" href="#">
-	                            <strong>Read All Messages</strong>
-	                            <i class="fa fa-angle-right"></i>
-	                        </a>
-	                    </li>
-	                </ul>
+	                @if(Auth::check())
+		                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+		                    <i class="fa fa-envelope fa-fw"></i>  <i class="fa fa-caret-down"></i>
+		                </a>
+		                <ul class="dropdown-menu dropdown-messages">
+		                    <li>
+		                        <a href="#">
+		                            <div>
+		                                <strong>John Smith</strong>
+		                                <span class="pull-right text-muted">
+		                                    <em>Yesterday</em>
+		                                </span>
+		                            </div>
+		                            <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...</div>
+		                        </a>
+		                    </li>
+		                    <li class="divider"></li>
+		                    <li>
+		                        <a href="#">
+		                            <div>
+		                                <strong>John Smith</strong>
+		                                <span class="pull-right text-muted">
+		                                    <em>Yesterday</em>
+		                                </span>
+		                            </div>
+		                            <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...</div>
+		                        </a>
+		                    </li>
+		                    <li class="divider"></li>
+		                    <li>
+		                        <a href="#">
+		                            <div>
+		                                <strong>John Smith</strong>
+		                                <span class="pull-right text-muted">
+		                                    <em>Yesterday</em>
+		                                </span>
+		                            </div>
+		                            <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...</div>
+		                        </a>
+		                    </li>
+		                    <li class="divider"></li>
+		                    <li>
+		                        <a class="text-center" href="#">
+		                            <strong>Read All Messages</strong>
+		                            <i class="fa fa-angle-right"></i>
+		                        </a>
+		                    </li>
+		                </ul>
+		            @endif
 	                <!-- /.dropdown-messages -->
 	            </li>
-	            <!-- /.dropdown -->
+	            
 	            <li class="dropdown">
 	                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-	                    <i class="fa fa-tasks fa-fw"></i>  <i class="fa fa-caret-down"></i>
+	                    <i class="fa fa-shopping-cart fa-fw"></i>  <i class="fa fa-caret-down"></i>
 	                </a>
-	                <ul class="dropdown-menu dropdown-tasks">
+	                <ul class="dropdown-menu">
 	                    <li>
-	                        <a href="#">
-	                            <div>
-	                                <p>
-	                                    <strong>Task 1</strong>
-	                                    <span class="pull-right text-muted">40% Complete</span>
-	                                </p>
-	                                <div class="progress progress-striped active">
-	                                    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
-	                                        <span class="sr-only">40% Complete (success)</span>
-	                                    </div>
-	                                </div>
-	                            </div>
-	                        </a>
+	                        <a href="#"> My Cart</a>
 	                    </li>
-	                    <li class="divider"></li>
 	                    <li>
-	                        <a href="#">
-	                            <div>
-	                                <p>
-	                                    <strong>Task 2</strong>
-	                                    <span class="pull-right text-muted">20% Complete</span>
-	                                </p>
-	                                <div class="progress progress-striped active">
-	                                    <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%">
-	                                        <span class="sr-only">20% Complete</span>
-	                                    </div>
-	                                </div>
-	                            </div>
-	                        </a>
-	                    </li>
-	                    <li class="divider"></li>
-	                    <li>
-	                        <a href="#">
-	                            <div>
-	                                <p>
-	                                    <strong>Task 3</strong>
-	                                    <span class="pull-right text-muted">60% Complete</span>
-	                                </p>
-	                                <div class="progress progress-striped active">
-	                                    <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
-	                                        <span class="sr-only">60% Complete (warning)</span>
-	                                    </div>
-	                                </div>
-	                            </div>
-	                        </a>
-	                    </li>
-	                    <li class="divider"></li>
-	                    <li>
-	                        <a href="#">
-	                            <div>
-	                                <p>
-	                                    <strong>Task 4</strong>
-	                                    <span class="pull-right text-muted">80% Complete</span>
-	                                </p>
-	                                <div class="progress progress-striped active">
-	                                    <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
-	                                        <span class="sr-only">80% Complete (danger)</span>
-	                                    </div>
-	                                </div>
-	                            </div>
-	                        </a>
-	                    </li>
-	                    <li class="divider"></li>
-	                    <li>
-	                        <a class="text-center" href="#">
-	                            <strong>See All Tasks</strong>
-	                            <i class="fa fa-angle-right"></i>
-	                        </a>
-	                    </li>
-	                </ul>
-	                <!-- /.dropdown-tasks -->
-	            </li>
-	            <!-- /.dropdown -->
-	            <li class="dropdown">
-	                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-	                    <i class="fa fa-bell fa-fw"></i>  <i class="fa fa-caret-down"></i>
-	                </a>
-	                <ul class="dropdown-menu dropdown-alerts">
-	                    <li>
-	                        <a href="#">
-	                            <div>
-	                                <i class="fa fa-comment fa-fw"></i> New Comment
-	                                <span class="pull-right text-muted small">4 minutes ago</span>
-	                            </div>
-	                        </a>
-	                    </li>
-	                    <li class="divider"></li>
-	                    <li>
-	                        <a href="#">
-	                            <div>
-	                                <i class="fa fa-twitter fa-fw"></i> 3 New Followers
-	                                <span class="pull-right text-muted small">12 minutes ago</span>
-	                            </div>
-	                        </a>
-	                    </li>
-	                    <li class="divider"></li>
-	                    <li>
-	                        <a href="#">
-	                            <div>
-	                                <i class="fa fa-envelope fa-fw"></i> Message Sent
-	                                <span class="pull-right text-muted small">4 minutes ago</span>
-	                            </div>
-	                        </a>
-	                    </li>
-	                    <li class="divider"></li>
-	                    <li>
-	                        <a href="#">
-	                            <div>
-	                                <i class="fa fa-tasks fa-fw"></i> New Task
-	                                <span class="pull-right text-muted small">4 minutes ago</span>
-	                            </div>
-	                        </a>
-	                    </li>
-	                    <li class="divider"></li>
-	                    <li>
-	                        <a href="#">
-	                            <div>
-	                                <i class="fa fa-upload fa-fw"></i> Server Rebooted
-	                                <span class="pull-right text-muted small">4 minutes ago</span>
-	                            </div>
-	                        </a>
-	                    </li>
-	                    <li class="divider"></li>
-	                    <li>
-	                        <a class="text-center" href="#">
-	                            <strong>See All Alerts</strong>
-	                            <i class="fa fa-angle-right"></i>
-	                        </a>
+	                    	<a href="#"> My Wish List</a>
 	                    </li>
 	                </ul>
 	                <!-- /.dropdown-alerts -->
@@ -232,12 +110,10 @@
 	                    <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
 	                </a>
 	                <ul class="dropdown-menu dropdown-user">
-	                    <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
-	                    </li>
-	                    <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
-	                    </li>
-	                    <li class="divider"></li>
 	                    @if(Auth::check())
+	                    	<li><a href="/user/products"><i class="fa fa-cubes fa-fw"></i> My Products</a>
+	                    	<li class="divider"></li>
+	                    	<li><a href="#"><i class="fa fa-cog fa-fw"></i> Preferences</a>
 	                    	<li><a href="/auth/logout"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
 	                    @else
 	                    	<li><a href="/auth/register"><i class="fa fa-pencil-square-o fa-fw"></i> Register</a>
@@ -267,82 +143,95 @@
 	                        <!-- /input-group -->
 	                    </li>
 	                    <li>
-	                        <a href="index.html"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
-	                    </li>
-	                    <li>
-	                        <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Charts<span class="fa arrow"></span></a>
+	                        <a href="#"><i class="fa fa-keyboard-o fa-fw"></i> Computers<span class="fa arrow"></span></a>
 	                        <ul class="nav nav-second-level">
 	                            <li>
-	                                <a href="flot.html">Flot Charts</a>
+	                                <a href="flot.html">Laptops</a>
 	                            </li>
 	                            <li>
-	                                <a href="morris.html">Morris.js Charts</a>
+	                                <a href="morris.html">Desktops</a>
+	                            </li>
+	                            <li>
+	                                <a href="morris.html">Peripherals</a>
+	                            </li>
+	                            <li>
+	                                <a href="morris.html">Accessories</a>
 	                            </li>
 	                        </ul>
 	                        <!-- /.nav-second-level -->
 	                    </li>
 	                    <li>
-	                        <a href="tables.html"><i class="fa fa-table fa-fw"></i> Tables</a>
+	                        <a href="tables.html"><i class="fa fa-tablet fa-fw"></i> Tablets & Cell Phones</a>
 	                    </li>
 	                    <li>
-	                        <a href="forms.html"><i class="fa fa-edit fa-fw"></i> Forms</a>
-	                    </li>
-	                    <li>
-	                        <a href="#"><i class="fa fa-wrench fa-fw"></i> UI Elements<span class="fa arrow"></span></a>
+	                        <a href="#"><i class="fa fa-gamepad fa-fw"></i> Gaming<span class="fa arrow"></span></a>
 	                        <ul class="nav nav-second-level">
 	                            <li>
-	                                <a href="panels-wells.html">Panels and Wells</a>
+	                                <a href="flot.html">Systems</a>
 	                            </li>
 	                            <li>
-	                                <a href="buttons.html">Buttons</a>
+	                                <a href="morris.html">Games</a>
 	                            </li>
 	                            <li>
-	                                <a href="notifications.html">Notifications</a>
+	                                <a href="morris.html">Accessories</a>
+	                            </li>
+	                        </ul>
+	                    </li>
+	                    <li>
+	                        <a href="#"><i class="fa fa-wifi fa-fw"></i> Networking<span class="fa arrow"></span></a>
+	                        <ul class="nav nav-second-level">
+	                            <li>
+	                                <a href="panels-wells.html">Modems & Routers</a>
 	                            </li>
 	                            <li>
-	                                <a href="typography.html">Typography</a>
+	                                <a href="buttons.html">Commercial Networking</a>
 	                            </li>
 	                            <li>
-	                                <a href="icons.html"> Icons</a>
+	                                <a href="notifications.html">Security</a>
 	                            </li>
 	                            <li>
-	                                <a href="grid.html">Grid</a>
+	                                <a href="typography.html">Accessories</a>
 	                            </li>
 	                        </ul>
 	                        <!-- /.nav-second-level -->
 	                    </li>
 	                    <li>
-	                        <a href="#"><i class="fa fa-sitemap fa-fw"></i> Multi-Level Dropdown<span class="fa arrow"></span></a>
+	                    	<a href="#"><i class="fa fa-tv fa-fw"></i> General Electronics<span class="fa arrow"></span></a>
+	                    	<ul class="nav nav-second-level">
+	                    		<li>
+	                    			<a href="#"> Televisions</a>
+	                    		</li>
+	                    		<li>
+	                    			<a href="#"> Cameras</a>
+	                    		</li>
+	                    		<li>
+	                    			<a href="#"> Blu-ray/DVD/CD Players</a>
+	                    		</li>
+	                    		<li>
+	                    			<a href="#"> Accessories</a>
+	                    		</li>
+	                    	</ul>
+	                    </li>
+	                    <li>
+	                        <a href="#"><i class="fa fa-headphones fa-fw"></i> Audio<span class="fa arrow"></span></a>
 	                        <ul class="nav nav-second-level">
 	                            <li>
-	                                <a href="#">Second Level Item</a>
+	                                <a href="#">Headphones</a>
 	                            </li>
 	                            <li>
-	                                <a href="#">Second Level Item</a>
+	                                <a href="#">Speakers</a>
 	                            </li>
 	                            <li>
-	                                <a href="#">Third Level <span class="fa arrow"></span></a>
-	                                <ul class="nav nav-third-level">
-	                                    <li>
-	                                        <a href="#">Third Level Item</a>
-	                                    </li>
-	                                    <li>
-	                                        <a href="#">Third Level Item</a>
-	                                    </li>
-	                                    <li>
-	                                        <a href="#">Third Level Item</a>
-	                                    </li>
-	                                    <li>
-	                                        <a href="#">Third Level Item</a>
-	                                    </li>
-	                                </ul>
-	                                <!-- /.nav-third-level -->
+	                            	<a href="#">Home Theater Systems</a>
+	                            </li>
+	                            <li>
+	                            	<a href="#">Accessories</a>
 	                            </li>
 	                        </ul>
 	                        <!-- /.nav-second-level -->
 	                    </li>
 	                    <li>
-	                        <a href="#"><i class="fa fa-files-o fa-fw"></i> Sample Pages<span class="fa arrow"></span></a>
+	                        <a href="#"><i class="fa fa-battery-2 fa-fw"></i> Accessories<span class="fa arrow"></span></a>
 	                        <ul class="nav nav-second-level">
 	                            <li>
 	                                <a href="blank.html">Blank Page</a>
