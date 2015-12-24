@@ -19,7 +19,9 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::orderBy('created_at', 'desc')->take(50)->paginate();
+        $sort           = \Input::get('sort', 'created_at');
+        $direction      = \Input::get('direction', 'desc');
+        $products       = Product::orderBy($sort, $direction)->take(50)->paginate();
         return view('products.index', compact('products'));
     }
 
@@ -42,7 +44,18 @@ class ProductController extends Controller
      */
     public function store(ProductRequest $request)
     {
-        Product::create(\Input::all());
+        $product_params = \Input::only([
+            'title',
+            'description',
+            'price'
+        ]);
+
+        $user       = \Auth::user();
+        $category   = Category::find(\Input::get('category'));
+        $product    = new Product($product_params);
+
+        $category->products()->save($product->user()->associate($user));
+
         return redirect('/products');
     }
 

@@ -20,6 +20,12 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
     ];
 });
 
+$factory->define(App\Category::class, function (Faker\Generator $faker) {
+    return [
+        'name' => $faker->word,
+    ];
+});
+
 $factory->define(App\Product::class, function (Faker\Generator $faker) {
     return [
         'title' => $faker->sentence(3),

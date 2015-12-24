@@ -11,21 +11,47 @@
 |
 */
 
+/*
+    Home Route
+ */
 Route::get('/', function () {
     return redirect('/products');
 });
-// Authentication routes...
+
+/*
+    Auth Routes
+ */
 Route::get('auth/login', 'Auth\AuthController@getLogin');
 Route::post('auth/login', 'Auth\AuthController@postLogin');
 Route::get('auth/logout', 'Auth\AuthController@getLogout');
 
-// Registration routes...
+/*
+    Registration Routes
+ */
 Route::get('auth/register', 'Auth\AuthController@getRegister');
 Route::post('auth/register', 'Auth\AuthController@postRegister');
 
+/*
+    Product Routes
+ */
+Route::get('products/create', [
+    'uses'       => 'ProductController@create',
+    'as'         => 'products.create',
+    'middleware' => 'auth'
+]);
 
-Route::get('products/create', ['uses'=> 'ProductController@create', 'as' => 'products.create', 'middleware' => 'auth']);
-Route::get('products/edit', ['uses'=> 'ProductController@edit', 'as' => 'products.edit', 'middleware' => 'auth']);
-Route::resource('products', 'ProductController', ['except' => ['create', 'edit']]);
+Route::get('products/edit', [
+    'uses'       => 'ProductController@edit',
+    'as'         => 'products.edit',
+    'middleware' => 'auth'
+]);
 
-Route::get('user/products', ['uses'=> 'UserController@products', 'as' => 'user.products', 'middleware' => 'auth']);
+Route::get('user/products', [
+    'uses'       => 'UserController@products',
+    'as'         => 'user.products',
+    'middleware' => 'auth'
+]);
+
+Route::resource('products', 'ProductController', [
+    'except' => ['create', 'edit']
+]);

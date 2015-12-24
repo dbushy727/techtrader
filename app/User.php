@@ -37,7 +37,11 @@ class User extends Model implements AuthenticatableContract,
      */
     protected $hidden = ['password', 'remember_token'];
 
-
+    /**
+     * Products owned by this user
+     *
+     * @return Illuminate\Database\Eloquent\Collection
+     */
     public function products()
     {
         return $this->hasMany('App\Product');

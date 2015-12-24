@@ -23,3 +23,11 @@
     padding: 2em;
     margin-bottom: 1em;
 }
+
+.sort_products {
+    margin: 20px 0;
+}
+
+.money_symbol {
+    padding-right: 1px;
+}

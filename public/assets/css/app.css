@@ -1,10 +1,11 @@
 .product_body {
   min-height: 15em;
-  position: relative; }
+  position: relative;
+}
 
 .created_time {
   font-weight: bold;
   text-align: right;
-  margin: 1em 0 0; }
-
+  margin: 1em 0 0;
+}
 /*# sourceMappingURL=app.css.map */
