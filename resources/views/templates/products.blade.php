@@ -23,7 +23,7 @@
                         <span class="label label-info category_label">{{ $category->name }}</span>
                     @endforeach
                     <span class="label label-warning condition_label">{{$product->condition->name}}</span>
-                    <img src="/assets/img/bear.jpeg" alt="" class="img-responsive product_image">
+                    <img src="/assets/img/bear.jpeg" alt="" class="img-responsive product_primary_image">
                     <div class="product_description">
                         <div>
                             {{ $product->description }}

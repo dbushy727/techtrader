@@ -4,7 +4,7 @@
     padding: 0;
 }
 
-.product_image {
+.product_primary_image {
     margin: 0 auto;
     width: 100%;
 }
@@ -52,4 +52,8 @@
 
 .product_description {
     padding: 1em;
+}
+
+.product_image {
+    display: inline-block;
 }

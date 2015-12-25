@@ -12,7 +12,7 @@
         <div class="col-sm-8 product_information">
             <div class="panel panel-default">
                 <div class="panel-body product_body">
-                    <img src="/assets/img/bear.jpeg" alt="" class="img-responsive product_image">
+                    <img src="/assets/img/bear.jpeg" alt="" class="img-responsive product_primary_image">
                     <div class="product_description">
                         <div>
                             {{ $product->description }}
@@ -64,6 +64,20 @@
                         <button class="btn btn-primary btn-xl">Buy Now</button>
                     </div>
 
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="photos col-sm-12">
+            <h4>Photos</h4>
+            <div class="product_images panel panel-default">
+                <div class="panel-body text-center">
+                    @foreach ($product->images as $image)
+                        <div class="product_image">
+                            <img class="img-responsive img-rounded" src={{ $image->path }}>
+                        </div>
+                    @endforeach
                 </div>
             </div>
         </div>
