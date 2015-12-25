@@ -55,4 +55,13 @@ class Product extends Model
     {
         return $this->belongsTo('App\ProductCondition', 'product_condition_id');
     }
+
+    /**
+     * Images of product
+     * @return Illuminate\Database\Eloquent\Collection
+     */
+    public function images()
+    {
+        return $this->hasMany('App\ProductImage');
+    }
 }

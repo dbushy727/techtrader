@@ -28,7 +28,5 @@ class ProductConditionTableSeeder extends Seeder
                 'name' => $name
             ]);
         }
-
-        $this->command->info('Product Condition table seeded!');
     }
 }

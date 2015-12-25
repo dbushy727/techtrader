@@ -33,7 +33,5 @@ class ProductsTableSeeder extends Seeder
 
             $product->save();
         }
-
-        $this->command->info('Products table seeded!');
     }
 }

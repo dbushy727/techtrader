@@ -19,7 +19,5 @@ class UserTableSeeder extends Seeder
         ]);
 
         factory(App\User::class, 50)->create();
-
-        $this->command->info('User table seeded!');
     }
 }

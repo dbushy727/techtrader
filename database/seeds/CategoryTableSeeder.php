@@ -27,7 +27,5 @@ class CategoryTableSeeder extends Seeder
                 'name' => $category
             ]);
         }
-
-        $this->command->info('Category table seeded!');
     }
 }
