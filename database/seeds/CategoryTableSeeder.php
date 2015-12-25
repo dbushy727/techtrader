@@ -12,33 +12,22 @@ class CategoryTableSeeder extends Seeder
      */
     public function run()
     {
-        Category::create([
-            'name' => 'Computers'
-        ]);
+        $categories = [
+            'Computers',
+            'Tablets',
+            'Gaming',
+            'Networking',
+            'General',
+            'Audio',
+            'Accessories',
+        ];
 
-        Category::create([
-            'name' => 'Tablets & Cell Phones'
-        ]);
+        foreach ($categories as $category) {
+            Category::create([
+                'name' => $category
+            ]);
+        }
 
-        Category::create([
-            'name' => 'Gaming'
-        ]);
-
-        Category::create([
-            'name' => 'Networking'
-        ]);
-
-        Category::create([
-            'name' => 'General Electronics'
-        ]);
-
-        Category::create([
-            'name' => 'Audio'
-        ]);
-
-        Category::create([
-            'name' => 'Accessories'
-        ]);
         $this->command->info('Category table seeded!');
     }
 }

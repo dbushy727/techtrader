@@ -21,7 +21,7 @@ class ProductController extends Controller
     {
         $sort           = \Input::get('sort', 'created_at');
         $direction      = \Input::get('direction', 'desc');
-        $products       = Product::orderBy($sort, $direction)->take(50)->paginate();
+        $products       = Product::with(['user', 'categories', 'condition'])->orderBy($sort, $direction)->take(50)->paginate();
         return view('products.index', compact('products'));
     }
 
@@ -67,7 +67,7 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        $product =  Product::find($id);
+        $product =  Product::with(['user', 'categories', 'condition'])->find($id);
         return view('products.show', compact('product'));
     }
 

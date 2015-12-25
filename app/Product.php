@@ -45,4 +45,14 @@ class Product extends Model
     {
         return $this->belongsTo('App\User');
     }
+
+    /**
+     * The condition the product is in
+     *
+     * @return App\Condition
+     */
+    public function condition()
+    {
+        return $this->belongsTo('App\ProductCondition', 'product_condition_id');
+    }
 }

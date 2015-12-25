@@ -19,14 +19,23 @@
             <div class="panel panel-default product_panel">
                 <div class="panel-heading product_title">{{ $product->title }}</div>
                 <div class="panel-body product_body">
-                    <img src="http://placebear.com/230/230" alt="" class="img-rounded img-responsive product_image">
-                    <div class="created_time">
-                        Posted: {{ $product->created_at->diffForHumans() }}
+                    @foreach ($product->categories as $category)
+                        <span class="label label-info category_label">{{ $category->name }}</span>
+                    @endforeach
+                    <span class="label label-warning condition_label">{{$product->condition->name}}</span>
+                    <img src="/assets/img/bear.jpeg" alt="" class="img-responsive product_image">
+                    <div class="product_description">
+                        <div>
+                            {{ $product->description }}
+                        </div>
+                        <div class="created_time">
+                            Posted: {{ $product->created_at->diffForHumans() }}
+                        </div>
                     </div>
                 </div>
                 <div class="panel-footer">
                         <label><span class="money_symbol">$</span>{{ $product->price }}</label>
-                        <button class="btn btn-primary btn-xs pull-right">View</button>
+                        <a href="/products/{{$product->id}}"><button class="btn btn-primary btn-xs pull-right">View</button></a>
                 </div>
             </div>
         </div>

@@ -6,11 +6,12 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>TechTrader</title>
 
-	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
+	{{-- <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet"> --}}
+	{{-- <link href="/css/bootstrap.min.css" rel="stylesheet"> --}}
 
 	<!-- Fonts -->
-	<link href='//fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+	{{-- <link href='//fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'> --}}
+	{{-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css"> --}}
 	<link rel="stylesheet" href="/css/all.css">
 
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -89,7 +90,7 @@
 		            @endif
 	                <!-- /.dropdown-messages -->
 	            </li>
-	            
+
 	            <li class="dropdown">
 	                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
 	                    <i class="fa fa-shopping-cart fa-fw"></i>  <i class="fa fa-caret-down"></i>
@@ -161,7 +162,7 @@
 	                        <!-- /.nav-second-level -->
 	                    </li>
 	                    <li>
-	                        <a href="tables.html"><i class="fa fa-tablet fa-fw"></i> Tablets & Cell Phones</a>
+	                        <a href="tables.html"><i class="fa fa-tablet fa-fw"></i> Mobile</a>
 	                    </li>
 	                    <li>
 	                        <a href="#"><i class="fa fa-gamepad fa-fw"></i> Gaming<span class="fa arrow"></span></a>
@@ -260,9 +261,11 @@
 	</div>
 
 	<!-- Scripts -->
-	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-	<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
+	{{-- <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script> --}}
+	{{-- <script src="/js/jquery.min.js"></script> --}}
+	{{-- <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script> --}}
+	{{-- <script src="/js/bootstrap.min.js"></script> --}}
+	{{-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script> --}}
 	<script src="/js/all.js"></script>
 </body>
 </html>

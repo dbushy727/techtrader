@@ -1,6 +1,5 @@
 <?php
 
-use App\Product;
 use App\User;
 use Illuminate\Database\Seeder;
 
@@ -19,15 +18,7 @@ class UserTableSeeder extends Seeder
             'password' => Hash::make('danbush123')
         ]);
 
-        User::first()->products()->save(new Product([
-            'title' => 'Macbook Air 13 inch',
-            'description' => 'Late 2015 Macbook Air with Retina Display',
-            'price' => 799.99
-        ]));
-
-        factory(App\User::class, 50)->create()->each(function ($u) {
-            $u->products()->save(factory(App\Product::class)->make());
-        });
+        factory(App\User::class, 50)->create();
 
         $this->command->info('User table seeded!');
     }
