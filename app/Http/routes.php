@@ -40,7 +40,7 @@ Route::get('products/create', [
     'middleware' => 'auth'
 ]);
 
-Route::get('products/edit', [
+Route::get('products/{product}/edit', [
     'uses'       => 'ProductController@edit',
     'as'         => 'products.edit',
     'middleware' => 'auth'

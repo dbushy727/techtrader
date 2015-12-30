@@ -27,6 +27,8 @@ class ProductRequest extends Request
             'title'         => ['required'],
             'description'   => ['required'],
             'price'         => ['required'],
+            'category'      => ['required'],
+            'condition'     => ['required'],
         ];
     }
 }

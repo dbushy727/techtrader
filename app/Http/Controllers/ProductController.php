@@ -9,9 +9,15 @@ use App\Http\Requests\ProductRequest;
 use App\Http\Controllers\Controller;
 use App\Product;
 use App\Category;
+use App\ProductCondition as Condition;
+use App\Repo\ProductRepo;
 
 class ProductController extends Controller
 {
+    public function __construct(ProductRepo $products)
+    {
+        $this->products = $products;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -26,14 +32,16 @@ class ProductController extends Controller
     }
 
     /**
-     * Create a product
+     * Show form for creating a product
      *
      * @return \Illuminate\Http\Response
      */
     public function create()
     {
         $categories = Category::lists('name', 'id');
-        return view('products.create', compact('categories'));
+        $conditions = Condition::lists('name', 'id');
+        $product    = new Product;
+        return view('products.create', compact('product', 'categories', 'conditions'));
     }
 
     /**
@@ -44,17 +52,7 @@ class ProductController extends Controller
      */
     public function store(ProductRequest $request)
     {
-        $product_params = \Input::only([
-            'title',
-            'description',
-            'price'
-        ]);
-
-        $user       = \Auth::user();
-        $category   = Category::find(\Input::get('category'));
-        $product    = new Product($product_params);
-
-        $category->products()->save($product->user()->associate($user));
+        $this->products->save(\Input::all());
 
         return redirect('/products');
     }
@@ -72,15 +70,35 @@ class ProductController extends Controller
     }
 
     /**
+     * Show Edit form for updating a product
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(Request $request, $id)
+    {
+        $product =  Product::find($id);
+
+        $categories = Category::lists('name', 'id');
+        $conditions = Condition::lists('name', 'id');
+        return \View::make('products.create', compact('product', 'categories', 'conditions'));
+    }
+
+    /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ProductRequest $request, $id)
     {
-        //
+        $product = Product::find($id);
+
+        $product->update(\Input::all());
+
+        return redirect('/products');
     }
 
     /**

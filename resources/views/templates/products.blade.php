@@ -35,7 +35,11 @@
                 </div>
                 <div class="panel-footer">
                         <label><span class="money_symbol">$</span>{{ $product->price }}</label>
+                        @if(Auth::user() == $product->user)
+                        <a href="/products/{{$product->id}}/edit"><button class="btn btn-warning btn-xs pull-right">Edit</button></a>
+                        @else
                         <a href="/products/{{$product->id}}"><button class="btn btn-primary btn-xs pull-right">View</button></a>
+                        @endif
                 </div>
             </div>
         </div>

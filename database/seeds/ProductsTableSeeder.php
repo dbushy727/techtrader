@@ -18,6 +18,17 @@ class ProductsTableSeeder extends Seeder
         $user_count      = (User::count() - 1);
         $condition_count = (ProductCondition::count() - 1);
 
+        $product = new Product([
+            'title'         => $faker->sentence(3),
+            'description'   => $faker->sentence(15),
+            'price'         => $faker->randomFloat(2, 10, 300),
+        ]);
+
+        $product->user()->associate(App\User::find(1));
+        $product->condition()->associate(App\ProductCondition::find(1));
+
+        $product->save();
+
         for ($i = 0; $i < 50; $i++) {
             $product = new Product([
                 'title' => $faker->sentence(3),

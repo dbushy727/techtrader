@@ -63,7 +63,6 @@
                     <div class="text-right">
                         <button class="btn btn-primary btn-xl">Buy Now</button>
                     </div>
-
                 </div>
             </div>
         </div>
@@ -72,7 +71,7 @@
         <div class="photos col-sm-12">
             <h4>Photos</h4>
             <div class="product_images panel panel-default">
-                <div class="panel-body text-center">
+                <div class="panel-body">
                     @foreach ($product->images as $image)
                         <div class="product_image">
                             <img class="img-responsive img-rounded" src={{ $image->path }}>

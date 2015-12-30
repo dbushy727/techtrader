@@ -38,9 +38,14 @@
 	        <!-- /.navbar-header -->
 
 	        <ul class="nav navbar-top-links navbar-right">
+                @if(Auth::check())
+	        	<li class="">
+	        		<a class="tooltip-drop" href="/products/create" data-toggle="tooltip" data-placement="bottom" title="Sell">
+	        		    <i class="fa fa-plus fa-fw"></i>
+	        		</a>
+	        	</li>
 	            <li class="dropdown">
-	                @if(Auth::check())
-		                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+		                <a class="dropdown-toggle tooltip-drop" data-toggle="dropdown" href="#" data-toggle="tooltip" data-placement="bottom" title="Messages">
 		                    <i class="fa fa-envelope fa-fw"></i>  <i class="fa fa-caret-down"></i>
 		                </a>
 		                <ul class="dropdown-menu dropdown-messages">
@@ -87,12 +92,12 @@
 		                        </a>
 		                    </li>
 		                </ul>
-		            @endif
 	                <!-- /.dropdown-messages -->
 	            </li>
+	            @endif
 
 	            <li class="dropdown">
-	                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+	                <a class="dropdown-toggle tooltip-drop" data-toggle="dropdown" href="#" data-toggle="tooltip" data-placement="bottom" title="Cart">
 	                    <i class="fa fa-shopping-cart fa-fw"></i>  <i class="fa fa-caret-down"></i>
 	                </a>
 	                <ul class="dropdown-menu">
@@ -107,7 +112,7 @@
 	            </li>
 	            <!-- /.dropdown -->
 	            <li class="dropdown">
-	                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+	                <a class="dropdown-toggle tooltip-drop" data-toggle="dropdown" href="#" data-toggle="tooltip" data-placement="bottom" title="Profile">
 	                    <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
 	                </a>
 	                <ul class="dropdown-menu dropdown-user">
@@ -267,5 +272,6 @@
 	{{-- <script src="/js/bootstrap.min.js"></script> --}}
 	{{-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script> --}}
 	<script src="/js/all.js"></script>
+	<script>$('.tooltip-drop').tooltip();</script>
 </body>
 </html>
