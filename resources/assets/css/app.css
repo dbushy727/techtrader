@@ -66,3 +66,6 @@
 .image_thumb {
     width: 100px;
 }
+.message_subject {
+    margin: 1em 0;
+}

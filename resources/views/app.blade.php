@@ -63,6 +63,11 @@
 		                    </li>
 		                    <li class="divider"></li>
 		                @endforeach
+		                <li>
+		                	<a href="/user/messages">
+		                		View All Messages
+		                	</a>
+		                </li>
 		                </ul>
 	                <!-- /.dropdown-messages -->
 	            </li>

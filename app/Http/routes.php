@@ -46,12 +46,23 @@ Route::get('products/{product}/edit', [
     'middleware' => 'auth'
 ]);
 
+
+Route::resource('products', 'ProductController', [
+    'except' => ['create', 'edit']
+]);
+
+
+/*
+    User Routes
+ */
 Route::get('user/products', [
     'uses'       => 'UserController@products',
     'as'         => 'user.products',
     'middleware' => 'auth'
 ]);
 
-Route::resource('products', 'ProductController', [
-    'except' => ['create', 'edit']
+Route::get('user/messages', [
+    'uses'       => 'UserController@messages',
+    'as'         => 'user.messages',
+    'middleware' => 'auth'
 ]);
