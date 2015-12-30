@@ -46,4 +46,24 @@ class User extends Model implements AuthenticatableContract,
     {
         return $this->hasMany('App\Product');
     }
+
+    /**
+     * Messages sent to this user
+     *
+     * @return Illuminate\Database\Eloquent\Collection
+     */
+    public function incoming_messages()
+    {
+        return $this->hasMany('App\Message', 'to_user_id', 'id');
+    }
+
+    /**
+     * Messages sent from this user
+     *
+     * @return Illuminate\Database\Eloquent\Collection
+     */
+    public function outgoing_messages()
+    {
+        return $this->hasMany('App\Message', 'from_user_id', 'id');
+    }
 }
