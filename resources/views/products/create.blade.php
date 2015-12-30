@@ -40,13 +40,11 @@
         </div>
 
         <div class="product_images">
-            <div class="panel-body">
                 @foreach ($product->images as $image)
                     <div class="product_image">
                         <img class="img-responsive img-rounded image_thumb" src={{ $image->path }}>
                     </div>
                 @endforeach
-            </div>
         </div>
 
         <div class="btn-group pull-right">
