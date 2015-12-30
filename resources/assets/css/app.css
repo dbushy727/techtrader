@@ -69,3 +69,13 @@
 .message_subject {
     margin: 1em 0;
 }
+.messages_badge {
+    position: relative;
+    right: 10px;
+    bottom: 8px;
+    padding: 3px;
+    background-color: #d9534f;
+    font-weight: 500;
+    font-size: 7px;
+    border-radius: 50%;
+}

@@ -46,7 +46,7 @@
 	        	</li>
 	            <li class="dropdown">
 		                <a class="dropdown-toggle tooltip-drop" data-toggle="dropdown" href="#" data-toggle="tooltip" data-placement="bottom" title="Messages">
-		                    <i class="fa fa-envelope fa-fw"></i>  <i class="fa fa-caret-down"></i>
+		                    <i class="fa fa-envelope fa-fw"></i> <span class="badge messages_badge">{{ Auth::user()->incoming_messages->count() }}</span>
 		                </a>
 		                <ul class="dropdown-menu dropdown-messages">
 		                @foreach (Auth::user()->incoming_messages->take(3) as $message)

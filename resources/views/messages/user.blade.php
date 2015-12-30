@@ -1,8 +1,8 @@
 @extends('app')
 @section('content')
 <h2>Messages</h2>
-<div class="panel panel-default">
-    <div class="panel-body">
+<div class="">
+    <div class="">
         <!-- Nav tabs -->
         <ul class="nav nav-tabs" role="tablist">
             <li role="presentation" class="active"><a href="#incoming" aria-controls="incoming" role="tab" data-toggle="tab">Incoming</a></li>
@@ -12,28 +12,29 @@
         <!-- Tab panes -->
         <div class="tab-content">
             <div role="tabpanel" class="tab-pane active" id="incoming">
-
                 @foreach($incoming as $message)
-                    <div class="list-group">
-                        <a href="#" class="list-group-item">
-                            <h4 class="list-group-item-heading">{{ $message->sender->name }} <span class="pull-right">{{ $message->created_at->diffForHumans() }}</span></h4>
+                    <div class="list-group" id="message-{{ $message->id }}">
+                        <div class="list-group-item">
+                            <h4 class="list-group-item-heading">{{ $message->sender->name }} <a href="#" data-toggle="tooltip" data-placement="bottom" title="Reply" class="pull-right tooltip-drop"><i class="fa fa-reply"></i></a></h4>
                             <p class="list-group-item-heading message_subject">{{ $message->subject }}</p>
                             <hr>
                             <em class="list-group-item-text">{{ $message->body }}</em>
-                        </a>
+                            <div class="text-right">{{ $message->created_at->diffForHumans() }}</div>
+                        </div>
                     </div>
                     @endforeach
 
             </div>
             <div role="tabpanel" class="tab-pane" id="outgoing">
                 @foreach($outgoing as $message)
-                    <div class="list-group">
-                        <a href="#" class="list-group-item">
-                            <h4 class="list-group-item-heading">{{ $message->sender->name }} <span class="pull-right">{{ $message->created_at->diffForHumans() }}</span></h4>
+                    <div class="list-group" id="message-{{ $message->id }}">
+                        <div href="#" class="list-group-item">
+                            <h4 class="list-group-item-heading">{{ $message->sender->name }} <a href="#" data-toggle="tooltip" data-placement="bottom" title="Reply" class="pull-right tooltip-drop"><i class="fa fa-reply"></i></a></h4>
                             <p class="list-group-item-heading message_subject">{{ $message->subject }}</p>
                             <hr>
                             <em class="list-group-item-text">{{ $message->body }}</em>
-                        </a>
+                            <div class="text-right">{{ $message->created_at->diffForHumans() }}</div>
+                        </div>
                     </div>
                     @endforeach
             </div>
