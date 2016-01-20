@@ -2,5 +2,5 @@
 
 @section('content')
 <h2>Latest Products</h2>
-@include('templates.products')
+@include('templates.products.products')
 @endsection
