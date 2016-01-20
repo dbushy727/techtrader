@@ -15,6 +15,10 @@
                     <img src="/assets/img/bear.jpeg" alt="" class="img-responsive product_primary_image">
                     <div class="product_description">
                         <div>
+                            {{ $product->basic_description }}
+                        </div>
+                        <hr>
+                        <div>
                             {!! $product->description !!}
                         </div>
                         <div class="created_time">

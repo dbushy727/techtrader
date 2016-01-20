@@ -34,7 +34,7 @@ class ProductsTableSeeder extends Seeder
         $product = new Product([
             'title'               => $faker->sentence(3),
             'basic_description'   => $faker->sentence(15),
-            'description'         => $faker->sentence(25),
+            'description'         => $faker->sentence(125),
             'price'               => $faker->randomFloat(2, 10, 300),
             'brand'               => $brands[array_rand($brands)],
             'model_number'        => str_random(8)
@@ -49,7 +49,7 @@ class ProductsTableSeeder extends Seeder
             $product = new Product([
                 'title'             => $faker->sentence(3),
                 'basic_description' => $faker->sentence(15),
-                'description'       => $faker->sentence(25),
+                'description'       => $faker->sentence(125),
                 'price'             => $faker->randomFloat(2, 10, 300),
             ]);
 
