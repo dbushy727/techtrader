@@ -45,7 +45,8 @@ class ProductController extends Controller
         $categories = Category::lists('name', 'id');
         $conditions = Condition::orderBy('id')->lists('name', 'id');
         $product    = new Product;
-        return view('products.create', compact('product', 'categories', 'conditions'));
+
+        return view('products.partials.form', compact('product', 'categories', 'conditions'));
     }
 
     /**
@@ -92,7 +93,8 @@ class ProductController extends Controller
 
         $categories = Category::lists('name', 'id');
         $conditions = Condition::orderBy('id')->lists('name', 'id');
-        return \View::make('products.create', compact('product', 'categories', 'conditions'));
+
+        return \View::make('products.partials.form', compact('product', 'categories', 'conditions'));
     }
 
     /**

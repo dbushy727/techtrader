@@ -15,7 +15,7 @@ class UserController extends Controller
     {
         $products =  \Auth::user()->products()->paginate();
 
-        return view('products.user', compact('products'));
+        return view('users.products', compact('products'));
     }
 
     public function messages()

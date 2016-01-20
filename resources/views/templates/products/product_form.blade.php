@@ -1,7 +1,4 @@
-@extends('app')
-
-@section('content')
-    <div class="col-sm-12 create_product">
+<div class="col-sm-12 create_product">
         @if(!$product->id)
             {!! Form::model($product, ['route' => 'products.store', 'class' => 'form_submit']) !!}
         @else
@@ -88,4 +85,3 @@
         @endif
         {!! Form::submit("Submit", ['class' => 'btn btn-success btn-xl submit']) !!}
     </div>
-@endsection
