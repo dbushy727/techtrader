@@ -7,11 +7,10 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Requests\ProductRequest;
 use App\Http\Controllers\Controller;
-use App\Product;
-use App\Category;
-use App\ProductCondition as Condition;
-use App\Repo\ProductRepo;
-use App\Repo\ImageRepo;
+use App\Models\Product;
+use App\Models\Category;
+use App\Models\ProductCondition as Condition;
+use App\Repos\ProductRepo;
 
 class ProductController extends Controller
 {

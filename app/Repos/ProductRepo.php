@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Repo;
+namespace App\Repos;
 
-use App\Category;
-use App\Product;
-use App\ProductCondition as Condition;
-use App\User;
-use App\ProductImage;
+use App\Models\Category;
+use App\Models\Product;
+use App\Models\ProductCondition as Condition;
+use App\Models\User;
+use App\Models\ProductImage;
 
 class ProductRepo
 {

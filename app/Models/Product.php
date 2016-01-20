@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Carbon\Carbon;
 
@@ -37,35 +37,36 @@ class Product extends Model
      */
     public function categories()
     {
-        return $this->belongsToMany('App\Category', 'product_categories', 'product_id', 'category_id');
+        return $this->belongsToMany('App\Models\Category', 'product_categories', 'product_id', 'category_id');
     }
 
     /**
      * The User that owns this product
      *
-     * @return App\User
+     * @return App\Models\User
      */
     public function user()
     {
-        return $this->belongsTo('App\User');
+        return $this->belongsTo('App\Models\User');
     }
 
     /**
      * The condition the product is in
      *
-     * @return App\Condition
+     * @return App\Models\Condition
      */
     public function condition()
     {
-        return $this->belongsTo('App\ProductCondition', 'product_condition_id');
+        return $this->belongsTo('App\Models\ProductCondition', 'product_condition_id');
     }
 
     /**
      * Images of product
+     *
      * @return Illuminate\Database\Eloquent\Collection
      */
     public function images()
     {
-        return $this->hasMany('App\ProductImage');
+        return $this->hasMany('App\Models\ProductImage');
     }
 }

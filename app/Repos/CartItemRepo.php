@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Repo;
+namespace App\Repos;
 
-use App\CartItem;
-use App\Product;
+use App\Models\CartItem;
+use App\Models\Product;
 
 class CartItemRepo
 {

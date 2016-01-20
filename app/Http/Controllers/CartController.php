@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Cart;
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
-use App\Product;
+use App\Models\Cart;
+use App\Models\Product;
+use App\Models\User;
 use App\Repo\CartItemRepo;
-use App\User;
 use Illuminate\Http\Request;
 
 class CartController extends Controller

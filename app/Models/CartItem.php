@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -13,20 +13,20 @@ class CartItem extends Model
     /**
      * User that owns this cart item
      *
-     * @return App\User
+     * @return App\Models\User
      */
     public function user()
     {
-        return $this->belongsTo('App\User');
+        return $this->belongsTo('App\Models\User');
     }
 
     /**
      * Product is part of this cart item
      *
-     * @return App\Product
+     * @return App\Models\Product
      */
     public function product()
     {
-        return $this->belongsTo('App\Product');
+        return $this->belongsTo('App\Models\Product');
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -20,21 +20,21 @@ class Message extends Model
     /**
      * Recipient of message
      *
-     * @return App\User
+     * @return App\Models\User
      */
     public function recipient()
     {
-        return $this->hasOne('App\User', 'id', 'to_user_id');
+        return $this->hasOne('App\Models\User', 'id', 'to_user_id');
     }
 
     /**
      * Sender of message
      *
-     * @return App\User
+     * @return App\Models\User
      */
     public function sender()
     {
-        return $this->hasOne('App\User', 'id', 'from_user_id');
+        return $this->hasOne('App\Models\User', 'id', 'from_user_id');
     }
 
     public function scopeUnread($query)

@@ -6,8 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\Product;
-use App\User;
+use App\Models\Product;
+use App\Models\User;
 
 class UserController extends Controller
 {
