@@ -32,11 +32,12 @@ class ProductsTableSeeder extends Seeder
         ];
 
         $product = new Product([
-            'title'         => $faker->sentence(3),
-            'description'   => $faker->sentence(15),
-            'price'         => $faker->randomFloat(2, 10, 300),
-            'brand'         => $brands[array_rand($brands)],
-            'model_number'  => str_random(8)
+            'title'               => $faker->sentence(3),
+            'basic_description'   => $faker->sentence(15),
+            'description'         => $faker->sentence(25),
+            'price'               => $faker->randomFloat(2, 10, 300),
+            'brand'               => $brands[array_rand($brands)],
+            'model_number'        => str_random(8)
         ]);
 
         $product->user()->associate(User::find(1));
@@ -46,9 +47,10 @@ class ProductsTableSeeder extends Seeder
 
         for ($i = 0; $i < 50; $i++) {
             $product = new Product([
-                'title' => $faker->sentence(3),
-                'description' => $faker->sentence(15),
-                'price' => $faker->randomFloat(2, 10, 300),
+                'title'             => $faker->sentence(3),
+                'basic_description' => $faker->sentence(15),
+                'description'       => $faker->sentence(25),
+                'price'             => $faker->randomFloat(2, 10, 300),
             ]);
 
             $user       = User::find(rand(1, $user_count));

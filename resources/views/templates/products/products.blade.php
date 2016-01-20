@@ -26,7 +26,7 @@
                     <img src="/assets/img/bear.jpeg" alt="" class="img-responsive product_primary_image">
                     <div class="product_description">
                         <div>
-                            {!! $product->description !!}
+                            {{ $product->basic_description }}
                         </div>
                         <div class="created_time">
                             Posted: {{ $product->created_at->diffForHumans() }}

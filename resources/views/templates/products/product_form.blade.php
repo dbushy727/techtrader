@@ -56,8 +56,13 @@
                     </div>
                 </div>
                 <div class="col-sm-12">
+                    <div class="form-group @if($errors->first('basic_description')) has-error @endif">
+                        {!! Form::label('basic_description', 'Basic Description') !!}
+                        {!! Form::text('basic_description', null, ['class' => 'form-control', 'required' => 'required', 'id' => 'basic_description', 'placeholder' => '160 character max']) !!}
+                        <small class="text-danger">{{ $errors->first('basic_description') }}</small>
+                    </div>
                     <div class="form-group @if($errors->first('description')) has-error @endif">
-                        {!! Form::label('description', 'Description') !!}
+                        {!! Form::label('description', 'Detailed Description') !!}
                         {!! Form::textarea('description', null, ['class' => 'form-control', 'required' => 'required', 'id' => 'description']) !!}
                         <small class="text-danger">{{ $errors->first('description') }}</small>
                         <script>CKEDITOR.replace( 'description' );</script>

@@ -24,6 +24,7 @@ class Product extends Model
         'user_id',
         'product_condition_id',
         'title',
+        'basic_description',
         'description',
         'price',
         'brand',
