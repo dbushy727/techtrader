@@ -36,4 +36,9 @@ class Message extends Model
     {
         return $this->hasOne('App\User', 'id', 'from_user_id');
     }
+
+    public function scopeUnread($query)
+    {
+        return $query->where('is_read', 0);
+    }
 }

@@ -61,7 +61,9 @@
                         <div>${{$product->price}}</div>
                     </div>
                     <div class="text-right">
-                        <button class="btn btn-primary btn-xl">Buy Now</button>
+                        <form action="/cart/add/{{$product->id}}" method="POST">
+                            <button class="btn btn-primary btn-xl">Add To Cart</button>
+                        </form>
                     </div>
                 </div>
             </div>

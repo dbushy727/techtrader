@@ -13,8 +13,12 @@
         <div class="tab-content">
             <div role="tabpanel" class="tab-pane active" id="incoming">
                 @foreach($incoming as $message)
-                    <div class="list-group" id="message-{{ $message->id }}">
+                    <div class="list-group " id="message-{{ $message->id }}">
+                    @if ($message->is_read)
                         <div class="list-group-item">
+                    @else
+                        <div class="list-group-item read_message">
+                    @endif
                             <h4 class="list-group-item-heading">{{ $message->sender->name }} <a href="#" data-toggle="tooltip" data-placement="bottom" title="Reply" class="pull-right tooltip-drop"><i class="fa fa-reply"></i></a></h4>
                             <p class="list-group-item-heading message_subject">{{ $message->subject }}</p>
                             <hr>

@@ -11,13 +11,17 @@ use App\Product;
 use App\Category;
 use App\ProductCondition as Condition;
 use App\Repo\ProductRepo;
+use App\Repo\ImageRepo;
 
 class ProductController extends Controller
 {
+    protected $products;
+
     public function __construct(ProductRepo $products)
     {
         $this->products = $products;
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -28,6 +32,7 @@ class ProductController extends Controller
         $sort           = \Input::get('sort', 'created_at');
         $direction      = \Input::get('direction', 'desc');
         $products       = Product::with(['user', 'categories', 'condition'])->orderBy($sort, $direction)->take(50)->paginate();
+
         return view('products.index', compact('products'));
     }
 
@@ -39,7 +44,7 @@ class ProductController extends Controller
     public function create()
     {
         $categories = Category::lists('name', 'id');
-        $conditions = Condition::lists('name', 'id');
+        $conditions = Condition::orderBy('id')->lists('name', 'id');
         $product    = new Product;
         return view('products.create', compact('product', 'categories', 'conditions'));
     }
@@ -52,9 +57,10 @@ class ProductController extends Controller
      */
     public function store(ProductRequest $request)
     {
-        $this->products->save(\Input::all());
+        $product = $this->products->save(\Input::all());
 
-        return redirect('/products');
+
+        return redirect('/user/products');
     }
 
     /**
@@ -66,6 +72,11 @@ class ProductController extends Controller
     public function show($id)
     {
         $product =  Product::with(['user', 'categories', 'condition'])->find($id);
+
+        if (!$product) {
+            return redirect('/');
+        }
+
         return view('products.show', compact('product'));
     }
 
@@ -81,7 +92,7 @@ class ProductController extends Controller
         $product =  Product::find($id);
 
         $categories = Category::lists('name', 'id');
-        $conditions = Condition::lists('name', 'id');
+        $conditions = Condition::orderBy('id')->lists('name', 'id');
         return \View::make('products.create', compact('product', 'categories', 'conditions'));
     }
 
@@ -98,7 +109,7 @@ class ProductController extends Controller
 
         $product->update(\Input::all());
 
-        return redirect('/products');
+        return redirect('/user/products');
     }
 
     /**
@@ -110,5 +121,7 @@ class ProductController extends Controller
     public function destroy($id)
     {
         Product::destroy($id);
+
+        return redirect('/user/products');
     }
 }

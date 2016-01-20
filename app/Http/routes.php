@@ -66,3 +66,42 @@ Route::get('user/messages', [
     'as'         => 'user.messages',
     'middleware' => 'auth'
 ]);
+
+
+/*
+    Cart Routes
+ */
+
+Route::get('cart', [
+    'uses'       => 'CartController@index',
+    'as'         => 'cart',
+    'middleware' => 'auth'
+]);
+
+Route::post('cart/add/{product_id}', [
+    'uses'       => 'CartController@add',
+    'as'         => 'cart.add',
+    'middleware' => 'auth'
+]);
+
+Route::delete('cart/reset', [
+    'uses'       => 'CartController@reset',
+    'as'         => 'cart.reset',
+    'middleware' => 'auth'
+]);
+
+Route::delete('cart/{cart_item_id}/delete', [
+    'uses'       => 'CartController@delete',
+    'as'         => 'cart.delete',
+    'middleware' => 'auth'
+]);
+
+/*
+    Image routes
+ */
+
+Route::post('/images/stage', [
+    'uses'       => 'ImageController@stage',
+    'as'         => 'image.stage',
+    'middleware' => 'auth'
+]);

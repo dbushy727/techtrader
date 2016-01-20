@@ -12,6 +12,6 @@ var elixir = require('laravel-elixir');
  */
 
 elixir(function(mix) {
-    mix.scripts(['jquery.min.js', 'bootstrap.min.js', 'metisMenu.js', 'sb-admin-2.js']);
+    mix.scripts(['bootstrap.min.js', 'metisMenu.js', 'sb-admin-2.js']);
     mix.styles(['bootstrap.min.css', 'font-awesome.min.css', 'metisMenu.min.css', 'sb-admin-2-timeline.css', 'sb-admin-2.css', 'app.css']);
 });

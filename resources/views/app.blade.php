@@ -11,8 +11,13 @@
 
 	<!-- Fonts -->
 	{{-- <link href='//fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'> --}}
-	{{-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css"> --}}
 	<link rel="stylesheet" href="/css/all.css">
+	<link rel="stylesheet" href="/css/dropzone.min.css">
+
+	<script src="/js/jquery.min.js"></script>
+	<script src="//cdn.ckeditor.com/4.5.6/standard/ckeditor.js"></script>
+	<script src="/js/dropzone.js"></script>
+	{{-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"> --}}
 
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -46,10 +51,10 @@
 	        	</li>
 	            <li class="dropdown">
 		                <a class="dropdown-toggle tooltip-drop" data-toggle="dropdown" href="#" data-toggle="tooltip" data-placement="bottom" title="Messages">
-		                    <i class="fa fa-envelope fa-fw"></i> <span class="badge messages_badge">{{ Auth::user()->incoming_messages->count() }}</span>
+		                    <i class="fa fa-envelope fa-fw"></i> @if(Auth::user() && Auth::user()->incoming_messages()->unread()->count())<span class="badge messages_badge">{{ Auth::user()->incoming_messages()->unread()->count() }}</span>@endif
 		                </a>
 		                <ul class="dropdown-menu dropdown-messages">
-		                @foreach (Auth::user()->incoming_messages->take(3) as $message)
+		                @foreach (Auth::user()->incoming_messages()->unread()->take(3)->get() as $message)
 		                    <li>
 		                        <a href="#">
 		                            <div>
@@ -74,18 +79,9 @@
 	            @endif
 
 	            <li class="dropdown">
-	                <a class="dropdown-toggle tooltip-drop" data-toggle="dropdown" href="#" data-toggle="tooltip" data-placement="bottom" title="Cart">
-	                    <i class="fa fa-shopping-cart fa-fw"></i>  <i class="fa fa-caret-down"></i>
+	                <a class="tooltip-drop"  href="/cart" data-toggle="tooltip" data-placement="bottom" title="Cart">
+	                    <i class="fa fa-shopping-basket fa-fw"></i> @if(Auth::user() && Auth::user()->cart_items->count())<span class="badge messages_badge">{{ Auth::user()->cart_items->count() }}</span>@endif
 	                </a>
-	                <ul class="dropdown-menu">
-	                    <li>
-	                        <a href="#"> My Cart</a>
-	                    </li>
-	                    <li>
-	                    	<a href="#"> My Wish List</a>
-	                    </li>
-	                </ul>
-	                <!-- /.dropdown-alerts -->
 	            </li>
 	            <!-- /.dropdown -->
 	            <li class="dropdown">
@@ -94,7 +90,8 @@
 	                </a>
 	                <ul class="dropdown-menu dropdown-user">
 	                    @if(Auth::check())
-	                    	<li><a href="/user/products"><i class="fa fa-cubes fa-fw"></i> My Products</a>
+	                    	<li><a href="/user/products">My Products</a>
+	                    	<li><a href="/user/products">My Orders</a>
 	                    	<li class="divider"></li>
 	                    	<li><a href="#"><i class="fa fa-cog fa-fw"></i> Preferences</a>
 	                    	<li><a href="/auth/logout"><i class="fa fa-sign-out fa-fw"></i> Logout</a>

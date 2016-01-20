@@ -18,10 +18,25 @@ class ProductsTableSeeder extends Seeder
         $user_count      = (User::count() - 1);
         $condition_count = (ProductCondition::count() - 1);
 
+        $brands = [
+            'Apple',
+            'Hewlett Packard',
+            'Lenovo',
+            'SanDisk',
+            'Dell',
+            'Asus',
+            'Anchor',
+            'Hitachi',
+            'Sony',
+            'Vizio'
+        ];
+
         $product = new Product([
             'title'         => $faker->sentence(3),
             'description'   => $faker->sentence(15),
             'price'         => $faker->randomFloat(2, 10, 300),
+            'brand'         => $brands[array_rand($brands)],
+            'model_number'  => str_random(8)
         ]);
 
         $product->user()->associate(App\User::find(1));
