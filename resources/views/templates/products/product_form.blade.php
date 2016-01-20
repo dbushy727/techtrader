@@ -65,7 +65,6 @@
                 </div>
             </div>
         </div>
-        {!! Form::close() !!}
         <div class="panel panel-default">
             <div class="panel-heading">Images</div>
             <div class="panel-body">
@@ -78,10 +77,11 @@
                 </div>
             </div>
         </div>
+        {!! Form::submit("Submit", ['class' => 'btn btn-success btn-xl submit']) !!}
+        {!! Form::close() !!}
         @if($product->id)
         {!! Form::open(['route' => ['products.destroy', $product->id], 'method' => 'delete']) !!}
                 <button type="submit" class="btn btn-danger pull-right">Delete</button>
         {!! Form::close() !!}
         @endif
-        {!! Form::submit("Submit", ['class' => 'btn btn-success btn-xl submit']) !!}
     </div>

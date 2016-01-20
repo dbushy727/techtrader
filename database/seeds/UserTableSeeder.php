@@ -1,6 +1,6 @@
 <?php
 
-use App\User;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 
 class UserTableSeeder extends Seeder
@@ -15,9 +15,9 @@ class UserTableSeeder extends Seeder
         User::create([
             'name' => 'Danny',
             'email' => 'dbushy727@gmail.com',
-            'password' => Hash::make('danbush123')
+            'password' => Hash::make('password123')
         ]);
 
-        factory(App\User::class, 50)->create();
+        factory(App\Models\User::class, 50)->create();
     }
 }

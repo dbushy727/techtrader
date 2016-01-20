@@ -1,8 +1,8 @@
 <?php
 
-use App\Product;
-use App\ProductCondition;
-use App\User;
+use App\Models\Product;
+use App\Models\ProductCondition;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 
 class ProductsTableSeeder extends Seeder
@@ -39,8 +39,8 @@ class ProductsTableSeeder extends Seeder
             'model_number'  => str_random(8)
         ]);
 
-        $product->user()->associate(App\User::find(1));
-        $product->condition()->associate(App\ProductCondition::find(1));
+        $product->user()->associate(User::find(1));
+        $product->condition()->associate(ProductCondition::find(1));
 
         $product->save();
 
@@ -51,8 +51,8 @@ class ProductsTableSeeder extends Seeder
                 'price' => $faker->randomFloat(2, 10, 300),
             ]);
 
-            $user       = App\User::find(rand(1, $user_count));
-            $condition  = App\ProductCondition::find(rand(1, $condition_count));
+            $user       = User::find(rand(1, $user_count));
+            $condition  = ProductCondition::find(rand(1, $condition_count));
 
             $product->user()->associate($user);
             $product->condition()->associate($condition);

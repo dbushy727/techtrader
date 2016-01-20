@@ -1,6 +1,6 @@
 <?php
 
-use App\ProductCondition;
+use App\Models\ProductCondition;
 use Illuminate\Database\Seeder;
 
 class ProductConditionTableSeeder extends Seeder

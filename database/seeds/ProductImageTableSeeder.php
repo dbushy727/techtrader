@@ -1,7 +1,7 @@
 <?php
 
-use App\Product;
-use App\ProductImage;
+use App\Models\Product;
+use App\Models\ProductImage;
 use Illuminate\Database\Seeder;
 
 class ProductImageTableSeeder extends Seeder
