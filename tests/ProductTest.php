@@ -15,6 +15,6 @@ class ProductTest extends TestBase
      */
     public function testBasicExample()
     {
-        $this->visit('/');
+        $this->assertTrue(false);
     }
 }
