@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models;
+namespace TechTrader\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -15,6 +15,6 @@ class ProductCondition extends Model
      */
     public function products()
     {
-        return $this->hasMany('App\Models\Product');
+        return $this->hasMany('TechTrader\Models\Product');
     }
 }

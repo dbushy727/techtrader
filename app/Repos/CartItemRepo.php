@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Repos;
+namespace TechTrader\Repos;
 
-use App\Models\CartItem;
-use App\Models\Product;
+use TechTrader\Models\CartItem;
+use TechTrader\Models\Product;
 
 class CartItemRepo
 {

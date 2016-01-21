@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Events;
+namespace TechTrader\Events;
 
 abstract class Event
 {

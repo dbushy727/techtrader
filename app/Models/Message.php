@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models;
+namespace TechTrader\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -20,21 +20,21 @@ class Message extends Model
     /**
      * Recipient of message
      *
-     * @return App\Models\User
+     * @return TechTrader\Models\User
      */
     public function recipient()
     {
-        return $this->hasOne('App\Models\User', 'id', 'to_user_id');
+        return $this->hasOne('TechTrader\Models\User', 'id', 'to_user_id');
     }
 
     /**
      * Sender of message
      *
-     * @return App\Models\User
+     * @return TechTrader\Models\User
      */
     public function sender()
     {
-        return $this->hasOne('App\Models\User', 'id', 'from_user_id');
+        return $this->hasOne('TechTrader\Models\User', 'id', 'from_user_id');
     }
 
     public function scopeUnread($query)

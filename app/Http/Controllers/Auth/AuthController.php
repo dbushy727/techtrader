@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace TechTrader\Http\Controllers\Auth;
 
-use App\Models\User;
+use TechTrader\Models\User;
 use Validator;
-use App\Http\Controllers\Controller;
+use TechTrader\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models;
+namespace TechTrader\Models;
 
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
@@ -44,7 +44,7 @@ class User extends Model implements AuthenticatableContract,
      */
     public function products()
     {
-        return $this->hasMany('App\Models\Product');
+        return $this->hasMany('TechTrader\Models\Product');
     }
 
     /**
@@ -54,7 +54,7 @@ class User extends Model implements AuthenticatableContract,
      */
     public function incoming_messages()
     {
-        return $this->hasMany('App\Models\Message', 'to_user_id', 'id');
+        return $this->hasMany('TechTrader\Models\Message', 'to_user_id', 'id');
     }
 
     /**
@@ -64,7 +64,7 @@ class User extends Model implements AuthenticatableContract,
      */
     public function outgoing_messages()
     {
-        return $this->hasMany('App\Models\Message', 'from_user_id', 'id');
+        return $this->hasMany('TechTrader\Models\Message', 'from_user_id', 'id');
     }
 
     /**
@@ -74,6 +74,6 @@ class User extends Model implements AuthenticatableContract,
      */
     public function cart_items()
     {
-        return $this->hasMany('App\Models\CartItem');
+        return $this->hasMany('TechTrader\Models\CartItem');
     }
 }

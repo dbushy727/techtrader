@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace TechTrader\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Http\Requests;
-use App\Http\Controllers\Controller;
-use App\Models\Product;
-use App\Models\User;
+use TechTrader\Http\Requests;
+use TechTrader\Http\Controllers\Controller;
+use TechTrader\Models\Product;
+use TechTrader\Models\User;
 
 class UserController extends Controller
 {

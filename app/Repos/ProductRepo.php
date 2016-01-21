@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Repos;
+namespace TechTrader\Repos;
 
-use App\Models\Category;
-use App\Models\Product;
-use App\Models\ProductCondition as Condition;
-use App\Models\User;
-use App\Models\ProductImage;
+use TechTrader\Models\Category;
+use TechTrader\Models\Product;
+use TechTrader\Models\ProductCondition as Condition;
+use TechTrader\Models\User;
+use TechTrader\Models\ProductImage;
 
 class ProductRepo
 {

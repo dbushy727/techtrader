@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace TechTrader\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-use App\Http\Requests;
-use App\Models\Cart;
-use App\Models\Product;
-use App\Models\User;
-use App\Repo\CartItemRepo;
+use TechTrader\Http\Controllers\Controller;
+use TechTrader\Http\Requests;
+use TechTrader\Models\Cart;
+use TechTrader\Models\Product;
+use TechTrader\Models\User;
+use TechTrader\Repo\CartItemRepo;
 use Illuminate\Http\Request;
 
 class CartController extends Controller

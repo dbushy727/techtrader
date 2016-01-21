@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models;
+namespace TechTrader\Models;
 
 use Carbon\Carbon;
 
@@ -38,27 +38,27 @@ class Product extends Model
      */
     public function categories()
     {
-        return $this->belongsToMany('App\Models\Category', 'product_categories', 'product_id', 'category_id');
+        return $this->belongsToMany('TechTrader\Models\Category', 'product_categories', 'product_id', 'category_id');
     }
 
     /**
      * The User that owns this product
      *
-     * @return App\Models\User
+     * @return TechTrader\Models\User
      */
     public function user()
     {
-        return $this->belongsTo('App\Models\User');
+        return $this->belongsTo('TechTrader\Models\User');
     }
 
     /**
      * The condition the product is in
      *
-     * @return App\Models\Condition
+     * @return TechTrader\Models\Condition
      */
     public function condition()
     {
-        return $this->belongsTo('App\Models\ProductCondition', 'product_condition_id');
+        return $this->belongsTo('TechTrader\Models\ProductCondition', 'product_condition_id');
     }
 
     /**
@@ -68,6 +68,6 @@ class Product extends Model
      */
     public function images()
     {
-        return $this->hasMany('App\Models\ProductImage');
+        return $this->hasMany('TechTrader\Models\ProductImage');
     }
 }

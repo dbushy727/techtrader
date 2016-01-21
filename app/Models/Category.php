@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models;
+namespace TechTrader\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -29,6 +29,6 @@ class Category extends Model
      */
     public function products()
     {
-        return $this->belongsToMany('App\Models\Product', 'product_categories');
+        return $this->belongsToMany('TechTrader\Models\Product', 'product_categories');
     }
 }

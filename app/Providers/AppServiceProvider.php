@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Providers;
+namespace TechTrader\Providers;
 
 use Illuminate\Support\ServiceProvider;
 

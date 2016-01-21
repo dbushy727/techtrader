@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Requests;
+namespace TechTrader\Http\Requests;
 
-use App\Http\Requests\Request;
+use TechTrader\Http\Requests\Request;
 
 class ProductRequest extends Request
 {

@@ -1,16 +1,16 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace TechTrader\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Http\Requests;
-use App\Http\Requests\ProductRequest;
-use App\Http\Controllers\Controller;
-use App\Models\Product;
-use App\Models\Category;
-use App\Models\ProductCondition as Condition;
-use App\Repos\ProductRepo;
+use TechTrader\Http\Requests;
+use TechTrader\Http\Requests\ProductRequest;
+use TechTrader\Http\Controllers\Controller;
+use TechTrader\Models\Product;
+use TechTrader\Models\Category;
+use TechTrader\Models\ProductCondition as Condition;
+use TechTrader\Repos\ProductRepo;
 
 class ProductController extends Controller
 {

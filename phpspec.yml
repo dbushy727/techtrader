@@ -1,5 +1,5 @@
 suites:
     main:
-        namespace: App
-        psr4_prefix: App
+        namespace: TechTrader
+        psr4_prefix: TechTrader
         src_path: app

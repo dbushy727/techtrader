@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models;
+namespace TechTrader\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -13,20 +13,20 @@ class CartItem extends Model
     /**
      * User that owns this cart item
      *
-     * @return App\Models\User
+     * @return TechTrader\Models\User
      */
     public function user()
     {
-        return $this->belongsTo('App\Models\User');
+        return $this->belongsTo('TechTrader\Models\User');
     }
 
     /**
      * Product is part of this cart item
      *
-     * @return App\Models\Product
+     * @return TechTrader\Models\Product
      */
     public function product()
     {
-        return $this->belongsTo('App\Models\Product');
+        return $this->belongsTo('TechTrader\Models\Product');
     }
 }
