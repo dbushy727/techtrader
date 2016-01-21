@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\User;
+use TechTrader\Models\User;
 use Illuminate\Database\Seeder;
 
 class UserTableSeeder extends Seeder
@@ -18,6 +18,6 @@ class UserTableSeeder extends Seeder
             'password' => Hash::make('password123')
         ]);
 
-        factory(App\Models\User::class, 50)->create();
+        factory(User::class, 50)->create();
     }
 }

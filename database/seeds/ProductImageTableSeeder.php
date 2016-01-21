@@ -1,7 +1,7 @@
 <?php
 
-use App\Models\Product;
-use App\Models\ProductImage;
+use TechTrader\Models\Product;
+use TechTrader\Models\ProductImage;
 use Illuminate\Database\Seeder;
 
 class ProductImageTableSeeder extends Seeder
@@ -26,7 +26,8 @@ class ProductImageTableSeeder extends Seeder
 
             for ($i = 1; $i <= $random_image_count; $i++) {
                 $product->images()->save(new ProductImage([
-                    'path' => '/assets/img/bear.jpeg'
+                    'path' => '/assets/img/bear.jpeg',
+                    'primary' => 0
                 ]));
             }
         }

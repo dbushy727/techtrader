@@ -13,7 +13,7 @@ class AddProductConditionForeignKeyToProducts extends Migration
     public function up()
     {
         Schema::table('products', function (Blueprint $table) {
-            $table->integer('product_condition_id')->unsigned();
+            $table->integer('product_condition_id')->unsigned()->default(0);
 
             $table->foreign('product_condition_id')->references('id')->on('product_conditions')->onDelete('cascade');
         });

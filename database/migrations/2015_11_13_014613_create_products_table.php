@@ -21,7 +21,7 @@ class CreateProductsTable extends Migration
             $table->string('basic_description', 160);
             $table->longText('description');
             $table->float('price');
-            $table->timestamps();
+            $table->nullableTimestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });

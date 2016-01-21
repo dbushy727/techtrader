@@ -1,8 +1,8 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Models\Category;
-use App\Models\Product;
+use TechTrader\Models\Category;
+use TechTrader\Models\Product;
 
 class ProductCategoryTableSeeder extends Seeder
 {

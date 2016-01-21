@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\ProductCondition;
+use TechTrader\Models\ProductCondition;
 use Illuminate\Database\Seeder;
 
 class ProductConditionTableSeeder extends Seeder

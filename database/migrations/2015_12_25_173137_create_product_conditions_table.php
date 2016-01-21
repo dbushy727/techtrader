@@ -15,7 +15,7 @@ class CreateProductConditionsTable extends Migration
         Schema::create('product_conditions', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name')->unique();
-            $table->timestamps();
+            $table->nullableTimestamps();
         });
     }
 

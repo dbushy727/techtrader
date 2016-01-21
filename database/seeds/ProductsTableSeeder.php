@@ -1,8 +1,8 @@
 <?php
 
-use App\Models\Product;
-use App\Models\ProductCondition;
-use App\Models\User;
+use TechTrader\Models\Product;
+use TechTrader\Models\ProductCondition;
+use TechTrader\Models\User;
 use Illuminate\Database\Seeder;
 
 class ProductsTableSeeder extends Seeder
@@ -32,12 +32,12 @@ class ProductsTableSeeder extends Seeder
         ];
 
         $product = new Product([
-            'title'               => $faker->sentence(3),
-            'basic_description'   => $faker->sentence(15),
-            'description'         => $faker->sentence(125),
-            'price'               => $faker->randomFloat(2, 10, 300),
-            'brand'               => $brands[array_rand($brands)],
-            'model_number'        => str_random(8)
+            'title'             => $faker->sentence(3),
+            'basic_description' => $faker->sentence(15),
+            'description'       => $faker->sentence(125),
+            'price'             => $faker->randomFloat(2, 10, 300),
+            'brand'             => $brands[array_rand($brands)],
+            'model_number'      => str_random(8)
         ]);
 
         $product->user()->associate(User::find(1));
@@ -51,6 +51,8 @@ class ProductsTableSeeder extends Seeder
                 'basic_description' => $faker->sentence(15),
                 'description'       => $faker->sentence(125),
                 'price'             => $faker->randomFloat(2, 10, 300),
+                'brand'             => $brands[array_rand($brands)],
+                'model_number'      => str_random(8)
             ]);
 
             $user       = User::find(rand(1, $user_count));
