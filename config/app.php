@@ -141,12 +141,12 @@ return [
         /*
          * Application Service Providers...
          */
+        Bestmomo\Scafold\ScafoldServiceProvider::class,
+        Illuminate\Html\HtmlServiceProvider::class,
         TechTrader\Providers\AppServiceProvider::class,
         TechTrader\Providers\AuthServiceProvider::class,
         TechTrader\Providers\EventServiceProvider::class,
         TechTrader\Providers\RouteServiceProvider::class,
-        Bestmomo\Scafold\ScafoldServiceProvider::class,
-        Illuminate\Html\HtmlServiceProvider::class,
 
     ],
 

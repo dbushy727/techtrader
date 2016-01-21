@@ -67,6 +67,11 @@ Route::get('user/messages', [
     'middleware' => 'auth'
 ]);
 
+Route::get('home', [
+    'uses'       => 'UserController@home',
+    'as'         => 'home'
+]);
+
 
 /*
     Cart Routes

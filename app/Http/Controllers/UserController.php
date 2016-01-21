@@ -3,14 +3,23 @@
 namespace TechTrader\Http\Controllers;
 
 use Illuminate\Http\Request;
-
-use TechTrader\Http\Requests;
 use TechTrader\Http\Controllers\Controller;
+use TechTrader\Http\Requests;
+use TechTrader\Models\Category;
 use TechTrader\Models\Product;
 use TechTrader\Models\User;
 
 class UserController extends Controller
 {
+    public function home()
+    {
+        $products = Product::with(['user', 'categories', 'condition'])->take(4)->get();
+
+        $categories = Category::lists('name', 'id');
+
+        return view('users.home', compact('products', 'categories'));
+    }
+
     public function products()
     {
         $products =  \Auth::user()->products()->paginate();

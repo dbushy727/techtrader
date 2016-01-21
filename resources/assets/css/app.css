@@ -1,3 +1,13 @@
+#page-wrapper {
+    margin-top: 50px;
+}
+
+@media (max-width: 767px) {
+    #page-wrapper {
+        margin-top: 100px;
+    }
+}
+
 .product_body {
     min-height: 15em;
     position: relative;
