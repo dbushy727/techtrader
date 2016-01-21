@@ -7,7 +7,7 @@ use TechTrader\Http\Requests;
 use TechTrader\Models\Cart;
 use TechTrader\Models\Product;
 use TechTrader\Models\User;
-use TechTrader\Repo\CartItemRepo;
+use TechTrader\Repos\CartItemRepo;
 use Illuminate\Http\Request;
 
 class CartController extends Controller
