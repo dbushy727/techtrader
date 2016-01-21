@@ -199,6 +199,8 @@ return [
         'Form'      => Illuminate\Html\FormFacade::class,
         'HTML'      => Illuminate\Html\HtmlFacade::class,
 
+        'HTTP'      => TechTrader\Facades\HTTP::class,
+
     ],
 
 ];
