@@ -595,6 +595,7 @@ table.dataTable thead .sorting:after {
     position: absolute;
     top: 1em;
     right: 1em;
+    font-weight: 300;
 }
 
 .product_body .condition_label {
@@ -640,4 +641,36 @@ table.dataTable thead .sorting:after {
     background: #dfdfdf;
 }
 
+
+.mint {
+    background-color: #468966;
+}
+
+.new {
+    background-color: #64A02E;
+}
+
+.like_new {
+    background-color: #B4CE31;
+}
+
+.good {
+    background-color: #D4CF28;
+}
+
+.fair {
+    background-color: #FF9C3B;
+}
+
+.poor {
+    background-color: #B64926;
+}
+
+.very_poor {
+    background-color: #A84423;
+}
+
+.broken {
+    background-color: #8E2800;
+}
 /*# sourceMappingURL=all.css.map */

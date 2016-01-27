@@ -2,9 +2,9 @@
     <div class="panel-heading product_title">{{ $product->title }}</div>
     <div class="panel-body product_body">
         @foreach ($product->categories as $category)
-            <span class="label label-info category_label">{{ $category->name }}</span>
+            <span class="label category_label"><i class="{{ $category->icon }} fa-2x"></i></span>
         @endforeach
-        <span class="label label-warning condition_label">{{$product->condition->name}}</span>
+        <span class="label {{ $product->condition->color }} condition_label" >{{$product->condition->name}}</span>
         <img src="/assets/img/bear.jpeg" alt="" class="img-responsive product_primary_image">
         <div class="product_description">
             <div>

@@ -12,20 +12,45 @@ class ProductConditionTableSeeder extends Seeder
      */
     public function run()
     {
-        $names = [
-            'Mint',
-            'New',
-            'Like New',
-            'Good',
-            'Fair',
-            'Poor',
-            'Very Poor',
-            'Broken'
+        $conditions = [
+            [
+                'name' => 'Mint',
+                'color' => 'mint',
+            ],
+            [
+                'name' => 'New',
+                'color' => 'new',
+            ],
+            [
+                'name' => 'Like New',
+                'color' => 'like_new',
+            ],
+            [
+                'name' => 'Good',
+                'color' => 'good',
+            ],
+            [
+                'name' => 'Fair',
+                'color' => 'fair',
+            ],
+            [
+                'name' => 'Poor',
+                'color' => 'poor',
+            ],
+            [
+                'name' => 'Very Poor',
+                'color' => 'very_poor',
+            ],
+            [
+                'name' => 'Broken',
+                'color' => 'broken',
+            ],
         ];
 
-        foreach ($names as $name) {
+        foreach ($conditions as $condition) {
             ProductCondition::create([
-                'name' => $name
+                'name' => array_get($condition, 'name'),
+                'color' => array_get($condition, 'color')
             ]);
         }
     }

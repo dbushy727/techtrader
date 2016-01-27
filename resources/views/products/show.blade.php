@@ -39,7 +39,7 @@
                     <div class="form-group condition">
                         <label>Condition:</label>
                         <div>
-                            <span class="label label-warning condition_label">{{ $product->condition->name }}</span>
+                            <span class="label {{ $condition->color }} condition_label">{{ $product->condition->name }}</span>
                         </div>
                     </div>
                     <div class="form-group categories">
