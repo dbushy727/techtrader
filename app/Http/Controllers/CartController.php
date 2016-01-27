@@ -12,6 +12,12 @@ use Illuminate\Http\Request;
 
 class CartController extends Controller
 {
+    /**
+     * Cart Item Repo
+     * @var TechTrader\Repos\CartItemRepo
+     */
+    protected $cart_items;
+
     public function __construct(CartItemRepo $cart_items)
     {
         $this->cart_items = $cart_items;
