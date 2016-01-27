@@ -60,6 +60,10 @@
     left: 1em;
 }
 
+.label-inverse {
+    color: #333;
+}
+
 .product_description {
     padding: 1em;
 }

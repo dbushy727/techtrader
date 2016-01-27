@@ -39,7 +39,7 @@
                     <div class="form-group condition">
                         <label>Condition:</label>
                         <div>
-                            <span class="label {{ $condition->color }} condition_label">{{ $product->condition->name }}</span>
+                            <span class="label {{ $product->condition->color }} condition_label">{{ $product->condition->name }}</span>
                         </div>
                     </div>
                     <div class="form-group categories">
@@ -50,7 +50,7 @@
                         @endif
                         <div>
                             @foreach($product->categories as $category)
-                                <span class="label label-info category_label">{{ $category->name }}</span>
+                                <span class="label category_label label-inverse"><i class="{{ $category->icon }} fa-2x"></i></span>
                             @endforeach
                         </div>
                     </div>
