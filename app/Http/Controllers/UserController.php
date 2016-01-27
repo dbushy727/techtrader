@@ -15,8 +15,7 @@ class UserController extends Controller
     {
         $products = Product::with(['user', 'categories', 'condition'])->take(4)->get();
 
-        $categories = Category::lists('name', 'id');
-
+        $categories = Category::all();
         return view('users.home', compact('products', 'categories'));
     }
 

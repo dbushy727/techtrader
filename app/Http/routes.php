@@ -15,7 +15,7 @@
     Home Route
  */
 Route::get('/', function () {
-    return redirect('/products');
+    return redirect('/home');
 });
 
 /*

@@ -7,7 +7,8 @@
     <div class="col-sm-4 text-center category_box">
         <div class="panel panel-default">
             <div class="panel-body">
-                {{ $category }}
+                <i class="{{ $category->icon }} fa-2x"></i>
+                <div>{{ $category->name }}</div>
             </div>
         </div>
     </div>

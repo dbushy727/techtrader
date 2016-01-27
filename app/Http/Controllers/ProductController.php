@@ -57,8 +57,7 @@ class ProductController extends Controller
      */
     public function store(ProductRequest $request)
     {
-        $product = $this->products->save(\Input::all());
-
+        $this->products->save(\Input::all());
 
         return redirect('/user/products');
     }

@@ -13,18 +13,40 @@ class CategoryTableSeeder extends Seeder
     public function run()
     {
         $categories = [
-            'Computers',
-            'Tablets',
-            'Gaming',
-            'Networking',
-            'General',
-            'Audio',
-            'Accessories',
+            [
+                'name' => 'Computers',
+                'icon' => 'fa fa-laptop'
+            ],
+            [
+                'name' => 'Tablets',
+                'icon' => 'fa fa-tablet'
+            ],
+            [
+                'name' => 'Gaming',
+                'icon' => 'fa fa-gamepad'
+            ],
+            [
+                'name' => 'Networking',
+                'icon' => 'fa fa-wifi'
+            ],
+            [
+                'name' => 'General',
+                'icon' => 'fa fa-print'
+            ],
+            [
+                'name' => 'Audio',
+                'icon' => 'fa fa-headphones'
+            ],
+            [
+                'name' => 'Accessories',
+                'icon' => 'fa fa-keyboard-o'
+            ],
         ];
 
         foreach ($categories as $category) {
             Category::create([
-                'name' => $category
+                'name' => array_get($category, 'name'),
+                'icon' => array_get($category, 'icon')
             ]);
         }
     }
