@@ -1,7 +1,7 @@
 <?php
 
 use TechTrader\Models\Product;
-use TechTrader\Models\ProductCondition;
+use TechTrader\Models\Condition;
 use TechTrader\Models\User;
 use Illuminate\Database\Seeder;
 
@@ -16,7 +16,7 @@ class ProductsTableSeeder extends Seeder
     {
         $faker          = Faker\Factory::create();
         $user_count      = (User::count() - 1);
-        $condition_count = (ProductCondition::count() - 1);
+        $condition_count = (Condition::count() - 1);
 
         $brands = [
             'Apple',
@@ -41,7 +41,7 @@ class ProductsTableSeeder extends Seeder
         ]);
 
         $product->user()->associate(User::find(1));
-        $product->condition()->associate(ProductCondition::find(1));
+        $product->condition()->associate(Condition::find(1));
 
         $product->save();
 
@@ -56,7 +56,7 @@ class ProductsTableSeeder extends Seeder
             ]);
 
             $user       = User::find(rand(1, $user_count));
-            $condition  = ProductCondition::find(rand(1, $condition_count));
+            $condition  = Condition::find(rand(1, $condition_count));
 
             $product->user()->associate($user);
             $product->condition()->associate($condition);

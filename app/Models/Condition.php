@@ -2,11 +2,10 @@
 
 namespace TechTrader\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use TechTrader\Models\Lima;
 
-class ProductCondition extends Model
+class Condition extends Lima
 {
-
     protected $fillable = ['name'];
     /**
      * The product in this condition

@@ -1,9 +1,9 @@
 <?php
 
-use TechTrader\Models\ProductCondition;
+use TechTrader\Models\Condition;
 use Illuminate\Database\Seeder;
 
-class ProductConditionTableSeeder extends Seeder
+class ConditionTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -48,7 +48,7 @@ class ProductConditionTableSeeder extends Seeder
         ];
 
         foreach ($conditions as $condition) {
-            ProductCondition::create([
+            Condition::create([
                 'name' => array_get($condition, 'name'),
                 'color' => array_get($condition, 'color')
             ]);

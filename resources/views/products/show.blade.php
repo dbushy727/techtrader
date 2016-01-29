@@ -12,7 +12,7 @@
         <div class="col-sm-8 product_information">
             <div class="panel panel-default">
                 <div class="panel-body product_body">
-                    <img src="/assets/img/bear.jpeg" alt="" class="img-responsive product_primary_image">
+                    <img src="{{ $product->primaryImage->path}}" alt="" class="img-responsive product_primary_image">
                     <div class="product_description">
                         <div>
                             {{ $product->basic_description }}

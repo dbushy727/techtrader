@@ -3,10 +3,9 @@
 namespace TechTrader\Models;
 
 use Carbon\Carbon;
+use TechTrader\Models\Lima;
 
-use Illuminate\Database\Eloquent\Model;
-
-class Product extends Model
+class Product extends Lima
 {
     /**
      * Product Dates
@@ -38,7 +37,7 @@ class Product extends Model
      */
     public function categories()
     {
-        return $this->belongsToMany('TechTrader\Models\Category', 'product_categories', 'product_id', 'category_id');
+        return $this->hasMany('TechTrader\Models\ProductCategory');
     }
 
     /**
@@ -58,7 +57,7 @@ class Product extends Model
      */
     public function condition()
     {
-        return $this->belongsTo('TechTrader\Models\ProductCondition', 'product_condition_id');
+        return $this->belongsTo('TechTrader\Models\Condition');
     }
 
     /**
@@ -69,5 +68,15 @@ class Product extends Model
     public function images()
     {
         return $this->hasMany('TechTrader\Models\ProductImage');
+    }
+
+    /**
+     * Primary Image
+     *
+     * @return TechTrader\Models\ProductImage
+     */
+    public function primaryImage()
+    {
+        return $this->hasOne('TechTrader\Models\ProductImage')->where('primary', 1);
     }
 }

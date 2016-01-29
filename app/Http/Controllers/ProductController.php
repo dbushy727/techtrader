@@ -9,7 +9,7 @@ use TechTrader\Http\Requests\ProductRequest;
 use TechTrader\Http\Controllers\Controller;
 use TechTrader\Models\Product;
 use TechTrader\Models\Category;
-use TechTrader\Models\ProductCondition as Condition;
+use TechTrader\Models\Condition;
 use TechTrader\Repos\ProductRepo;
 
 class ProductController extends Controller

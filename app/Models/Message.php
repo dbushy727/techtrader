@@ -2,9 +2,9 @@
 
 namespace TechTrader\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use TechTrader\Models\Lima;
 
-class Message extends Model
+class Message extends Lima
 {
     /**
      * Fillable Attributes on Product Object

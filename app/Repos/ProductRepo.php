@@ -4,7 +4,7 @@ namespace TechTrader\Repos;
 
 use TechTrader\Models\Category;
 use TechTrader\Models\Product;
-use TechTrader\Models\ProductCondition as Condition;
+use TechTrader\Models\Condition;
 use TechTrader\Models\User;
 use TechTrader\Models\ProductImage;
 
@@ -37,7 +37,7 @@ class ProductRepo
         $product = new Product($data);
 
         $product->user()->associate($user)
-            ->condition()->associate($condition);
+                ->condition()->associate($condition);
 
         $product->save();
 
@@ -54,7 +54,7 @@ class ProductRepo
     protected function getStagedImages()
     {
         $user   = \Auth::user();
-        $images = \Storage::listContents("image_staging/{$user->id}");
+        $images = \Storage::disk('local')->listContents("image_staging/{$user->id}");
 
         $images = array_map(function ($image) {
             $product_image = new ProductImage([

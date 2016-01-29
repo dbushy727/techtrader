@@ -2,9 +2,9 @@
 
 namespace TechTrader\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use TechTrader\Models\Lima;
 
-class Category extends Model
+class Category extends Lima
 {
     /**
      * Table name
@@ -29,6 +29,6 @@ class Category extends Model
      */
     public function products()
     {
-        return $this->belongsToMany('TechTrader\Models\Product', 'product_categories');
+        return $this->hasMany('TechTrader\Models\ProductCategory');
     }
 }

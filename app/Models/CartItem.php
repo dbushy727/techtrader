@@ -2,9 +2,9 @@
 
 namespace TechTrader\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use TechTrader\Models\Lima;
 
-class CartItem extends Model
+class CartItem extends Lima
 {
     protected $fillable = [
         'user_id',

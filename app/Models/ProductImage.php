@@ -2,9 +2,9 @@
 
 namespace TechTrader\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use TechTrader\Models\Lima;
 
-class ProductImage extends Model
+class ProductImage extends Lima
 {
     protected $fillable = ['path', 'primary'];
 
@@ -16,5 +16,10 @@ class ProductImage extends Model
     public function user()
     {
         return $this->belongsTo('TechTrader\Models\User');
+    }
+
+    public function scopePrimary($query)
+    {
+        return $query->where('primary', 1);
     }
 }

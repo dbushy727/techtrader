@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateProductConditionsTable extends Migration
+class CreateConditionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,7 +12,7 @@ class CreateProductConditionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('product_conditions', function (Blueprint $table) {
+        Schema::create('conditions', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name')->unique();
             $table->string('color');
@@ -27,6 +27,6 @@ class CreateProductConditionsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('product_conditions');
+        Schema::drop('conditions');
     }
 }

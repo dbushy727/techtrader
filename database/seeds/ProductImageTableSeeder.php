@@ -14,11 +14,11 @@ class ProductImageTableSeeder extends Seeder
     public function run()
     {
         $products = Product::all();
-        $path = '/assets/img/bear.jpeg';
+        $path = 'https://s3-us-west-2.amazonaws.com/techtrader/product_images/bear.jpeg';
 
         foreach ($products as $product) {
             $product->images()->save(new ProductImage([
-                'path' => '/assets/img/bear.jpeg',
+                'path' => $path,
                 'primary' => 1
             ]));
 
@@ -26,7 +26,7 @@ class ProductImageTableSeeder extends Seeder
 
             for ($i = 1; $i <= $random_image_count; $i++) {
                 $product->images()->save(new ProductImage([
-                    'path' => '/assets/img/bear.jpeg',
+                    'path' => $path,
                     'primary' => 0
                 ]));
             }
