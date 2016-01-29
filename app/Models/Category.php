@@ -29,6 +29,6 @@ class Category extends Lima
      */
     public function products()
     {
-        return $this->hasMany('TechTrader\Models\ProductCategory');
+        return $this->belongsToMany('TechTrader\Models\Product', 'product_categories', 'category_id', 'product_id')->withTimestamps();
     }
 }
