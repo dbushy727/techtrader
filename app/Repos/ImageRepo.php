@@ -8,8 +8,18 @@ use TechTrader\Models\ProductImage;
 
 class ImageRepo
 {
+    /**
+     * ProductImage
+     *
+     * @var TechTrader\Models\ProductImage
+     */
     protected $product_image;
 
+    /**
+     * Base Path for s3 product images
+     *
+     * @var string
+     */
     protected $s3_basepath = 'https://s3-us-west-2.amazonaws.com/techtrader';
 
     /**
@@ -22,22 +32,35 @@ class ImageRepo
         $this->product_image = $product_image;
     }
 
+    /**
+     * Save files to staging area before getting linked to product
+     *
+     * @param  UploadedFile $file    [description]
+     * @param  int $user_id
+     * @return void
+     */
     public function stage(UploadedFile $file, $user_id)
     {
         $storage_location = storage_path('app/image_staging/' . $user_id);
         $name = time() . '_' . $file->getClientOriginalName();
-        $file->move($storage_location, $name);
+        $file->move($storage_location, str_replace(' ', '_', $name));
     }
 
-    public function save(Product $product, $image)
+    /**
+     * Send image to S3 and save ProductImage to DB
+     *
+     * @param  Product $product
+     * @param  array $image
+     * @param  int $primary
+     * @return TechTrader\Models\ProductImage
+     */
+    public function save(Product $product, array $image, $primary = 0)
     {
         $image_path = storage_path("app/{$image['path']}");
 
         \Storage::put("product_images/{$image['basename']}", file_get_contents($image_path));
 
         $s3_path = $this->s3_basepath . '/product_images/' . $image['basename'];
-
-        $primary = (bool) !$product->images->count();
 
         $product_image = ProductImage::create([
             'product_id' => $product->id,
@@ -46,5 +69,31 @@ class ImageRepo
         ]);
 
         return $product_image;
+    }
+
+    /**
+     * Get all images staged by the current user
+     *
+     * @return array staged images
+     */
+    protected function getStagedImages()
+    {
+        $user = \Auth::user();
+
+        return \Storage::disk('local')->listContents("image_staging/{$user->id}");
+    }
+
+    /**
+     * Clear out the image_staging directory for this user
+     *
+     * @return TechTrader\Repos\ImageRepo
+     */
+    protected function clearStaging()
+    {
+        $user = \Auth::user();
+
+        \Storage::disk('local')->deleteDir("/image_staging/{$user->id}");
+
+        return $this;
     }
 }

@@ -11,14 +11,25 @@ use TechTrader\Repos\ImageRepo;
 
 class ProductRepo
 {
+    /**
+     * Product
+     *
+     * @var TechTrader\Models\Product
+     */
     protected $product;
 
+    /**
+     * Image Repo
+     *
+     * @var TechTrader\Repos\ImageRepo
+     */
     protected $image_repo;
 
     /**
-     * Establish repo
+     * Establish Product and ImageRepo
      *
      * @param Product $product
+     * @param ImageRepo $image_repo
      */
     public function __construct(Product $product, ImageRepo $image_repo)
     {
@@ -30,6 +41,7 @@ class ProductRepo
      * Save product with all necessary associations
      *
      * @param  array  $data
+     *
      * @return bool
      */
     public function save(array $data)
@@ -40,6 +52,7 @@ class ProductRepo
 
         $product = new Product($data);
 
+        // Create product with a user and condition
         $product->user()
                 ->associate($user)
                 ->condition()
@@ -48,37 +61,32 @@ class ProductRepo
 
         $product->categories()->attach($category);
 
+        // Attach any staged images to this product
         $this->attachImages($product);
 
         return $product;
     }
 
-
-    protected function getStagedImages()
-    {
-        $user = \Auth::user();
-
-        return \Storage::disk('local')->listContents("image_staging/{$user->id}");
-    }
-
-    protected function clearStaging()
-    {
-        $user = \Auth::user();
-
-        \Storage::disk('local')->deleteDir("/image_staging/{$user->id}");
-
-        return $this;
-    }
-
+    /**
+     * Attach images to a product
+     *
+     * @param  Product $product
+     *
+     * @return TechTrader\Repos\ProductRepo
+     */
     protected function attachImages(Product $product)
     {
-        $images = $this->getStagedImages();
+        $images = $this->image_repo->getStagedImages();
+
+        $primary = (bool) !$product->images->count();
 
         foreach ($images as $image) {
-            $this->image_repo->save($product, $image);
+            $this->image_repo->save($product, $image, $primary);
+
+            $primary = 0;
         }
 
-        $this->clearStaging();
+        $this->image_repo->clearStaging();
 
         return $this;
     }
