@@ -7,6 +7,7 @@ use TechTrader\Models\Lima;
 class Condition extends Lima
 {
     protected $fillable = ['name'];
+
     /**
      * The product in this condition
      *

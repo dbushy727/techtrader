@@ -1,4 +1,17 @@
 <div class="col-sm-12 create_product">
+        <div class="panel panel-default">
+            <div class="panel-heading">Images</div>
+            <div class="panel-body">
+                <div class="product_images">
+                    <form action="/images/stage" class="dropzone"></form>
+                    @foreach ($product->images as $image)
+                        <div class="product_image">
+                            <img class="img-responsive img-rounded image_thumb" src={{ $image->path }}>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+        </div>
         @if(!$product->id)
             {!! Form::model($product, ['route' => 'products.store', 'class' => 'form_submit']) !!}
         @else
@@ -67,18 +80,6 @@
                         <small class="text-danger">{{ $errors->first('description') }}</small>
                         <script>CKEDITOR.replace( 'description' );</script>
                     </div>
-                </div>
-            </div>
-        </div>
-        <div class="panel panel-default">
-            <div class="panel-heading">Images</div>
-            <div class="panel-body">
-                <div class="product_images">
-                    @foreach ($product->images as $image)
-                        <div class="product_image">
-                            <img class="img-responsive img-rounded image_thumb" src={{ $image->path }}>
-                        </div>
-                    @endforeach
                 </div>
             </div>
         </div>

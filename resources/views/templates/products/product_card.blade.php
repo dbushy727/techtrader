@@ -5,7 +5,7 @@
             <span class="label category_label"><i class="{{ $category->icon }} fa-2x"></i></span>
         @endforeach
         <span class="label {{ $product->condition->color }} condition_label" >{{$product->condition->name}}</span>
-        <img src="{{ $product->primaryImage->path}}" alt="" class="img-responsive product_primary_image">
+        <img src="{{ $product->primaryImage->path}}" class="img-responsive product_primary_image">
         <div class="product_description">
             <div>{{ $product->basic_description }}</div>
             <div class="created_time">

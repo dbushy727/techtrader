@@ -3,23 +3,27 @@
 namespace TechTrader\Repos;
 
 use TechTrader\Models\Category;
-use TechTrader\Models\Product;
 use TechTrader\Models\Condition;
-use TechTrader\Models\User;
+use TechTrader\Models\Product;
 use TechTrader\Models\ProductImage;
+use TechTrader\Models\User;
+use TechTrader\Repos\ImageRepo;
 
 class ProductRepo
 {
     protected $product;
+
+    protected $image_repo;
 
     /**
      * Establish repo
      *
      * @param Product $product
      */
-    public function __construct(Product $product)
+    public function __construct(Product $product, ImageRepo $image_repo)
     {
         $this->product = $product;
+        $this->image_repo = $image_repo;
     }
 
     /**
@@ -36,35 +40,34 @@ class ProductRepo
 
         $product = new Product($data);
 
-        $product->user()->associate($user)
-                ->condition()->associate($condition);
-
-        $product->save();
+        $product->user()
+                ->associate($user)
+                ->condition()
+                ->associate($condition)
+                ->save();
 
         $product->categories()->attach($category);
 
-        return $product;
-
         $this->attachImages($product);
 
-        return $product->id;
+        return $product;
     }
 
 
     protected function getStagedImages()
     {
-        $user   = \Auth::user();
-        $images = \Storage::disk('local')->listContents("image_staging/{$user->id}");
+        $user = \Auth::user();
 
-        $images = array_map(function ($image) {
-            $product_image = new ProductImage([
-                'path' => storage_path("app/{$image->path}")
-            ]);
+        return \Storage::disk('local')->listContents("image_staging/{$user->id}");
+    }
 
-            return $product_image;
-        }, $images);
+    protected function clearStaging()
+    {
+        $user = \Auth::user();
 
-        return $images;
+        \Storage::disk('local')->deleteDir("/image_staging/{$user->id}");
+
+        return $this;
     }
 
     protected function attachImages(Product $product)
@@ -72,8 +75,10 @@ class ProductRepo
         $images = $this->getStagedImages();
 
         foreach ($images as $image) {
-            $image->product()->associate($product)->save();
+            $this->image_repo->save($product, $image);
         }
+
+        $this->clearStaging();
 
         return $this;
     }

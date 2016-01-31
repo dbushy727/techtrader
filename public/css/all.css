@@ -677,4 +677,18 @@ table.dataTable thead .sorting:after {
 .broken {
     background-color: #8E2800;
 }
+
+.dropzone {
+    /*min-height: 20em;*/
+}
+
+.dropzone .dz-preview .dz-details, .dropzone-previews .dz-preview .dz-details {
+    width: inherit;
+    height: inherit;
+    background: inherit;
+}
+
+.dropzone .dz-preview .dz-error-mark, .dropzone-previews .dz-preview .dz-error-mark, .dropzone .dz-preview .dz-success-mark, .dropzone-previews .dz-preview .dz-success-mark {
+    background-image: none;
+}
 /*# sourceMappingURL=all.css.map */
