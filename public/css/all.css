@@ -545,6 +545,7 @@ table.dataTable thead .sorting:after {
 .top-pad {
     margin-top: 1em;
 }
+
 #page-wrapper {
     margin-top: 50px;
 }
@@ -694,5 +695,10 @@ table.dataTable thead .sorting:after {
 
 .dropzone .dz-preview .dz-error-mark, .dropzone-previews .dz-preview .dz-error-mark, .dropzone .dz-preview .dz-success-mark, .dropzone-previews .dz-preview .dz-success-mark {
     background-image: none;
+}
+
+
+path#Oval-2 {
+    fill: green;
 }
 /*# sourceMappingURL=all.css.map */
