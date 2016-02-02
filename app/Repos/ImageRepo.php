@@ -76,7 +76,7 @@ class ImageRepo
      *
      * @return array staged images
      */
-    protected function getStagedImages()
+    public function getStagedImages()
     {
         $user = \Auth::user();
 
@@ -88,7 +88,7 @@ class ImageRepo
      *
      * @return TechTrader\Repos\ImageRepo
      */
-    protected function clearStaging()
+    public function clearStaging()
     {
         $user = \Auth::user();
 

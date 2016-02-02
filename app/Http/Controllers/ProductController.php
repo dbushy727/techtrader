@@ -14,7 +14,12 @@ use TechTrader\Repos\ProductRepo;
 
 class ProductController extends Controller
 {
+    /**
+     * Product Repo
+     * @var TechTrader\Repos\ProductRepo
+     */
     protected $products;
+
 
     public function __construct(ProductRepo $products)
     {

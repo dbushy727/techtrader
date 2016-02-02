@@ -542,6 +542,9 @@ table.dataTable thead .sorting:after {
 .panel-yellow a:hover {
     color: #df8a13;
 }
+.top-pad {
+    margin-top: 1em;
+}
 #page-wrapper {
     margin-top: 50px;
 }
@@ -614,6 +617,7 @@ table.dataTable thead .sorting:after {
 
 .product_image {
     display: inline-block;
+    max-width: 20em;
 }
 
 .product_images {

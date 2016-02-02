@@ -10,13 +10,26 @@ use TechTrader\Repos\ImageRepo;
 
 class ImageController extends Controller
 {
+    /**
+     * Image Repo
+     *
+     * @var TechTrader\Repos\ImageRepo
+     */
+    protected $images;
+
+
     public function __construct(ImageRepo $images)
     {
         $this->images = $images;
     }
 
+    /**
+     * Save images in staging area
+     *
+     * @return bool
+     */
     public function stage()
     {
-        $this->images->stage(\Input::file('file'), \Auth::user()->id);
+        return $this->images->stage(\Input::file('file'), \Auth::user()->id);
     }
 }

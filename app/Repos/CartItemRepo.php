@@ -7,6 +7,11 @@ use TechTrader\Models\Product;
 
 class CartItemRepo
 {
+    /**
+     * Cart Item
+     *
+     * @var TechTrader\Models\CartItem
+     */
     protected $cart_item;
 
     /**

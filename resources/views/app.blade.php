@@ -28,6 +28,7 @@
 		<!-- Page Content -->
 	    <div id="page-wrapper">
 	    	<div class="row">
+	    	<div class="top-pad"></div>
 	        	@yield('content')
 	    	</div>
 	    </div>

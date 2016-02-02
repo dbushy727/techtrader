@@ -65,8 +65,8 @@
                     <li><a href="#"><i class="fa fa-cog fa-fw"></i> Preferences</a>
                     <li><a href="/auth/logout"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                 @else
-                    <li><a href="/auth/register"><i class="fa fa-pencil-square-o fa-fw"></i> Register</a>
                     <li><a href="/auth/login"><i class="fa fa-sign-in fa-fw"></i> Login</a>
+                    <li><a href="/auth/register"><i class="fa fa-pencil-square-o fa-fw"></i> Register</a>
                 @endif
                 </li>
             </ul>

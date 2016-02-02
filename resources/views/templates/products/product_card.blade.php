@@ -7,7 +7,14 @@
         <span class="label {{ $product->condition->color }} condition_label" >{{$product->condition->name}}</span>
         <img src="{{ $product->primaryImage->path}}" class="img-responsive product_primary_image">
         <div class="product_description">
-            <div>{{ $product->basic_description }}</div>
+            <div class="form-group">
+                <label>Brand: </label>
+                {{ $product->brand }}
+            </div>
+            <div class="form-group">
+                <label>Description:</label>
+                <div>{{ $product->basic_description }}</div>
+            </div>
             <div class="created_time">
                 Posted: {{ $product->created_at->diffForHumans() }}
             </div>

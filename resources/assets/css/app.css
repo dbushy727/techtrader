@@ -1,3 +1,7 @@
+.top-pad {
+    margin-top: 1em;
+}
+
 #page-wrapper {
     margin-top: 50px;
 }
@@ -70,6 +74,7 @@
 
 .product_image {
     display: inline-block;
+    max-width: 20em;
 }
 
 .product_images {
@@ -146,4 +151,9 @@
 
 .dropzone .dz-preview .dz-error-mark, .dropzone-previews .dz-preview .dz-error-mark, .dropzone .dz-preview .dz-success-mark, .dropzone-previews .dz-preview .dz-success-mark {
     background-image: none;
+}
+
+
+path#Oval-2 {
+    fill: green;
 }

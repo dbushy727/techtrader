@@ -13,13 +13,20 @@
             <div class="panel panel-default">
                 <div class="panel-body product_body">
                     <img src="{{ $product->primaryImage->path}}" alt="" class="img-responsive product_primary_image">
+
                     <div class="product_description">
-                        <div>
-                            {{ $product->basic_description }}
+                        <div class="form-group">
+                            <label>Brand: </label>
+                            {{ $product->brand }}
+                        </div>
+                        <div class="form-group">
+                            <label>Basic Description:</label>
+                            <div>{{ $product->basic_description }}</div>
                         </div>
                         <hr>
-                        <div>
-                            {!! $product->description !!}
+                        <div class="form-group">
+                            <label>Detailed Description:</label>
+                            <div>{!! $product->description !!}</div>
                         </div>
                         <div class="created_time">
                             Posted: {{ $product->created_at->diffForHumans() }}
