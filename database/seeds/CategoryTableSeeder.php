@@ -2,8 +2,9 @@
 
 use Illuminate\Database\Seeder;
 use TechTrader\Models\Category;
+use TechTrader\Seeders\Fertilizer;
 
-class CategoryTableSeeder extends Seeder
+class CategoryTableSeeder extends Fertilizer
 {
     /**
      * Run the database seeds.

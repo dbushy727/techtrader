@@ -1,9 +1,10 @@
 <?php
 
-use TechTrader\Models\User;
 use Illuminate\Database\Seeder;
+use TechTrader\Models\User;
+use TechTrader\Seeders\Fertilizer;
 
-class UserTableSeeder extends Seeder
+class UserTableSeeder extends Fertilizer
 {
     /**
      * Run the database seeds.

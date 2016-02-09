@@ -1,10 +1,11 @@
 <?php
 
+use Illuminate\Database\Seeder;
 use TechTrader\Models\Product;
 use TechTrader\Models\ProductImage;
-use Illuminate\Database\Seeder;
+use TechTrader\Seeders\Fertilizer;
 
-class ProductImageTableSeeder extends Seeder
+class ProductImageTableSeeder extends Fertilizer
 {
     /**
      * Run the database seeds.

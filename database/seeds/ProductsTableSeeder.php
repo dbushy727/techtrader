@@ -1,11 +1,12 @@
 <?php
 
-use TechTrader\Models\Product;
-use TechTrader\Models\Condition;
-use TechTrader\Models\User;
 use Illuminate\Database\Seeder;
+use TechTrader\Models\Condition;
+use TechTrader\Models\Product;
+use TechTrader\Models\User;
+use TechTrader\Seeders\Fertilizer;
 
-class ProductsTableSeeder extends Seeder
+class ProductsTableSeeder extends Fertilizer
 {
     /**
      * Run the database seeds.
