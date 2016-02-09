@@ -13,8 +13,8 @@ class EventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $listen = [
-        'TechTrader\Events\SomeEvent' => [
-            'TechTrader\Listeners\EventListener',
+        'TechTrader\Events\ProductWasPurchased' => [
+            'TechTrader\Listeners\NotifyUser',
         ],
     ];
 
