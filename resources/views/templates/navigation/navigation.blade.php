@@ -20,7 +20,10 @@
         </li>
         <li class="dropdown">
                 <a class="dropdown-toggle tooltip-drop" data-toggle="dropdown" href="#" data-toggle="tooltip" data-placement="bottom" title="Messages">
-                    <i class="fa fa-envelope fa-fw"></i> @if(Auth::user() && Auth::user()->incoming_messages()->unread()->count())<span class="badge messages_badge">{{ Auth::user()->incoming_messages()->unread()->count() }}</span>@endif
+                    <i class="fa fa-envelope fa-fw"></i>
+                    @if($unread_message_count = Auth::user()->incoming_messages()->unread()->count())
+                        <span class="badge messages_badge">{{ $unread_message_count }}</span>
+                    @endif
                 </a>
                 <ul class="dropdown-menu dropdown-messages">
                 @foreach (Auth::user()->incoming_messages()->unread()->take(3)->get() as $message)
@@ -44,6 +47,30 @@
                 </li>
                 </ul>
             <!-- /.dropdown-messages -->
+        </li>
+        <li class="dropdown">
+            <a class="dropdown-toggle tooltip-drop" data-toggle="dropdown" href="#" data-toggle="tooltip" data-placement="bottom" title="Notifications">
+                <i class="fa fa-bell fa-fw"></i>
+                @if($notification_count = Auth::user()->notifications()->count())
+                    <span class="badge messages_badge">{{ $notification_count }}</span>
+                @endif
+            </a>
+            <ul class="dropdown-menu dropdown-messages">
+            @foreach (Auth::user()->notifications()->get() as $notification)
+                <li>
+                    <a href="#">
+                        <div>
+                            <span class="text-muted pull-right">
+                                <em>{{ $notification->created_at->diffForHumans() }}</em>
+                            </span>
+                        </div>
+                        <div class="clearfix">{{ $notification->message }}</div>
+                    </a>
+                </li>
+                <li class="divider"></li>
+            @endforeach
+            </ul>
+        <!-- /.dropdown-messages -->
         </li>
         @endif
 
