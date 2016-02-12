@@ -49,7 +49,7 @@ class Calculator
      */
     public function __construct(Cart $cart, $tax_rate = 0.00)
     {
-        $this->cart = $cart;
+        $this->cart     = $cart;
         $this->tax_rate = $tax_rate;
     }
 
