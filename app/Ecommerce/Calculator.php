@@ -74,7 +74,6 @@ class Calculator
     /**
      * Calculate total tax due
      *
-     * @param  float $tax_rate
      * @return TechTrader\Ecommerce\Calculator
      */
     protected function calculateTax()
