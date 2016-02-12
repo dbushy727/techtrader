@@ -145,5 +145,7 @@ class Checkout
     protected function processPayment()
     {
         $this->payment_processor->charge($this->order);
+
+        return $this;
     }
 }
