@@ -66,7 +66,7 @@ class Calculator
      */
     protected function calculateTax($tax_rate)
     {
-        $this->tax = $this->subtotal * $tax_rate;
+        $this->tax = (int) round($this->subtotal * $tax_rate);
 
         return $this;
     }
