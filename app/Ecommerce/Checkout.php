@@ -2,7 +2,8 @@
 
 namespace TechTrader\Ecommerce;
 
-use TechTrader\Ecommerce\PaymentProcessor;
+use TechTrader\Models\Cart;
+use TechTrader\Models\CartItem;
 use TechTrader\Models\User;
 
 class Checkout
@@ -13,13 +14,6 @@ class Checkout
      * @var TechTrader\Models\User
      */
     protected $user;
-
-    /**
-     * The cart that will be checked out
-     *
-     * @var TechTrader\Models\Cart
-     */
-    protected $cart;
 
     /**
      * Payment processor used to send payment
@@ -49,21 +43,22 @@ class Checkout
      * @param TechTrader\Models\Cart $cart
      * @param TechTrader\Models\PaymentProcessor $payment_processor
      */
-    public function __construct(User $user, Cart $cart, PaymentProcessor $payment_processor)
+    public function __construct(User $user, PaymentProcessor $payment_processor)
     {
         $this->user              = $user;
-        $this->cart              = $cart;
         $this->payment_processor = $payment_processor;
     }
 
     /**
      * Go through checkout process
-     * @return [type] [description]
+     *
+     * @throws Exception
+     * @return TechTrader\Ecommerce\Checkout
      */
     public function checkout()
     {
         try {
-            $this->beginOrder()
+            return $this->beginOrder()
                 ->scanAllItems()
                 ->calculate()
                 ->processPayment()
@@ -80,8 +75,8 @@ class Checkout
      */
     protected function beginOrder()
     {
-        if ($this->cart->isEmpty()) {
-            throw new \Exception('Cannot Checkout: Cart is empty');
+        if ($this->user->cart->isEmpty()) {
+            throw new \Exception('Cannot begin order with empty cart');
         }
 
         $this->order = $this->user->orders()->create([]);

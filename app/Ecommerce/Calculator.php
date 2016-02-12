@@ -41,7 +41,12 @@ class Calculator
      */
     protected $total = 0;
 
-
+    /**
+     * Start up a calculator
+     *
+     * @param  Cart      $cart
+     * @param  float     $tax_rate
+     */
     public function __construct(Cart $cart, $tax_rate = 0.00)
     {
         $this->cart = $cart;
@@ -49,8 +54,8 @@ class Calculator
     }
 
     /**
-     * Calculate the combined total of all the order items
-     * before any other calculations
+     * Calculate the combined subtotal of all the
+     * order items before any other calculations
      *
      * @return TechTrader\Ecommerce\Checkout
      */
@@ -94,10 +99,15 @@ class Calculator
     /**
      * Calculate all amounts
      *
+     * @throws Exception
      * @return TechTrader\Ecommerce\Calculator
      */
     public function calculate()
     {
+        if ($this->cart->isEmpty()) {
+            return new \Exception('Cannot calculate when cart is empty');
+        }
+
         return $this->calculateSubtotal()
             ->calculateTax()
             ->calculateTotal();

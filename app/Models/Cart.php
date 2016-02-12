@@ -42,5 +42,13 @@ class Cart extends Lima
         return $this->hasMany('TechTrader\Models\CartItem');
     }
 
-
+    /**
+     * Check if the cart is empty
+     *
+     * @return boolean
+     */
+    public function isEmpty()
+    {
+        return !$this->items()->count();
+    }
 }
