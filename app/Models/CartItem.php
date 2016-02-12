@@ -6,18 +6,24 @@ use TechTrader\Models\Lima;
 
 class CartItem extends Lima
 {
+    /**
+     * Attributes that are fillable
+     *
+     * @var array
+     */
     protected $fillable = [
-        'user_id',
+        'cart_id',
         'product_id'
     ];
+
     /**
-     * User that owns this cart item
+     * Cart that owns this cart item
      *
-     * @return TechTrader\Models\User
+     * @return TechTrader\Models\Cart
      */
-    public function user()
+    public function cart()
     {
-        return $this->belongsTo('TechTrader\Models\User');
+        return $this->belongsTo('TechTrader\Models\Cart');
     }
 
     /**
