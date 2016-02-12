@@ -17,10 +17,16 @@ abstract class PaymentProcessor
         $this->order_repo = $order_repo;
     }
 
+    /**
+     * Charge the credit card and update the order to paid
+     *
+     * @param  Order  $order [description]
+     * @return boolean
+     */
     public function pay(Order $order)
     {
         $this->charge($order->user, $order->total);
 
-        $this->order_repo->find($order->id)->setToPaid();
+        return $this->order_repo->find($order->id)->setToPaid();
     }
 }

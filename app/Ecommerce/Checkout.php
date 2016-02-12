@@ -2,7 +2,6 @@
 
 namespace TechTrader\Ecommerce;
 
-use TechTrader\Models\Cart;
 use TechTrader\Models\CartItem;
 use TechTrader\Models\User;
 
@@ -106,7 +105,7 @@ class Checkout
      */
     protected function scanAllItems()
     {
-        foreach ($this->cart->items as $cart_item) {
+        foreach ($this->user->cart->items as $cart_item) {
             $this->scan($cart_item);
         }
 
@@ -120,7 +119,7 @@ class Checkout
      */
     protected function calculate()
     {
-        $this->calculator = new Calculator($this->cart);
+        $this->calculator = new Calculator($this->user->cart);
 
         $this->calculator->calculate();
 
