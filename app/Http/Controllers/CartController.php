@@ -13,36 +13,45 @@ use Illuminate\Http\Request;
 class CartController extends Controller
 {
     /**
-     * Cart Item Repo
-     * @var TechTrader\Repos\CartItemRepo
+     * Cart Repo
+     *
+     * @var TechTrader\Repos\CartRepo
      */
-    protected $cart_items;
+    protected $cart;
 
-    public function __construct(CartItemRepo $cart_items)
+    public function __construct(CartRepo $cart)
     {
-        $this->cart_items = $cart_items;
+        $this->cart = $cart;
     }
 
     public function index()
     {
-        return \Auth::user()->cart_items;
+        return \Auth::user()->cart;
     }
 
-    public function add($product_id)
+    public function get($cart_id)
     {
-        $this->cart_items->save($product_id);
+        return $this->cart->find($cart_id);
+    }
+
+    public function add($cart_id, $product_id)
+    {
+        $this->cart->addItem($cart_id, $product_id);
+
         return redirect('/cart');
     }
 
     public function reset()
     {
-        $this->cart_items->reset();
+        $this->cart->reset();
+
         return redirect('/cart');
     }
 
     public function delete($cart_item_id)
     {
-        $this->cart_items->delete($cart_item_id);
+        $this->cart->removeItem($cart_item_id);
+
         return redirect('/cart');
     }
 }
