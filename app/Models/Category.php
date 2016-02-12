@@ -14,7 +14,7 @@ class Category extends Lima
     protected $table = 'categories';
 
     /**
-     * Fillable attributes of a category
+     * Attributes that are fillable
      *
      * @var array
      */

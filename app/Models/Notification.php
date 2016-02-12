@@ -10,7 +10,7 @@ class Notification extends Lima
     use SoftDeletes;
 
     /**
-     * Fillable attributes of a notification
+     * Attributes that are fillable
      *
      * @var array
      */

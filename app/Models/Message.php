@@ -7,7 +7,7 @@ use TechTrader\Models\Lima;
 class Message extends Lima
 {
     /**
-     * Fillable Attributes on Product Object
+     * Attributes that are fillable
      *
      * @var array
      */

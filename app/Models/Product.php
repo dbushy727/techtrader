@@ -8,14 +8,7 @@ use TechTrader\Models\Lima;
 class Product extends Lima
 {
     /**
-     * Product Dates
-     *
-     * @var array
-     */
-    protected $dates = ['created_at', 'updated_at'];
-
-    /**
-     * Fillable Attributes on Product Object
+     * Attributes that are fillable
      *
      * @var array
      */
@@ -29,6 +22,13 @@ class Product extends Lima
         'brand',
         'model_number',
     ];
+
+    /**
+     * Product Dates
+     *
+     * @var array
+     */
+    protected $dates = ['created_at', 'updated_at'];
 
     /**
      * Categories associated with this product

@@ -6,6 +6,11 @@ use TechTrader\Models\Lima;
 
 class ProductImage extends Lima
 {
+    /**
+     * Attributes that are fillable
+     *
+     * @var array
+     */
     protected $fillable = [
         'product_id',
         'path',

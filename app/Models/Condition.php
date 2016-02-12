@@ -6,6 +6,11 @@ use TechTrader\Models\Lima;
 
 class Condition extends Lima
 {
+    /**
+     * Attributes that are fillable
+     *
+     * @var array
+     */
     protected $fillable = ['name'];
 
     /**

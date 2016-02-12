@@ -68,16 +68,6 @@ class User extends Lima implements AuthenticatableContract,
     }
 
     /**
-     * Cart items that belong this user
-     *
-     * @return Illuminate\Database\Eloquent\Collection
-     */
-    public function cart_items()
-    {
-        return $this->hasMany('TechTrader\Models\CartItem');
-    }
-
-    /**
      * Notifications that belong to this user
      *
      * @return Illuminate\Database\Eloquent\Collection
@@ -85,5 +75,25 @@ class User extends Lima implements AuthenticatableContract,
     public function notifications()
     {
         return $this->hasMany('TechTrader\Models\Notification');
+    }
+
+    /**
+     * Carts that belong this user
+     *
+     * @return Illuminate\Database\Eloquent\Collection
+     */
+    public function carts()
+    {
+        return $this->hasMany('TechTrader\Models\Cart');
+    }
+
+    /**
+     * Orders that belong to this user
+     *
+     * @return Illuminate\Database\Eloquent\Collection
+     */
+    public function orders()
+    {
+        return $this->hasMany('TechTrader\Models\Order');
     }
 }
