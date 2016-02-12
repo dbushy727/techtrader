@@ -2,6 +2,8 @@
 
 namespace TechTrader\Ecommerce;
 
+use TechTrader\Models\Cart;
+
 class Calculator
 {
     /**
@@ -44,13 +46,13 @@ class Calculator
      *
      * @return TechTrader\Ecommerce\Checkout
      */
-    protected function subtotal()
+    protected function calculateSubtotal()
     {
         // Reset subtotal
         $this->subtotal = 0;
 
         foreach ($this->cart->items as $cart_item) {
-            $subtotal += $cart_item->product->price;
+            $this->subtotal += $cart_item->product->price;
         }
 
         return $this;
