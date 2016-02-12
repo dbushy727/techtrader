@@ -14,6 +14,13 @@ class Calculator
     protected $cart;
 
     /**
+     * Tax rate
+     *
+     * @var float
+     */
+    protected $tax_rate;
+
+    /**
      * Subtotal of the checkout process
      *
      * @var int
@@ -35,9 +42,10 @@ class Calculator
     protected $total = 0;
 
 
-    public function __construct(Cart $cart)
+    public function __construct(Cart $cart, $tax_rate = 0.00)
     {
         $this->cart = $cart;
+        $this->tax_rate = $tax_rate;
     }
 
     /**
@@ -64,9 +72,9 @@ class Calculator
      * @param  float $tax_rate
      * @return TechTrader\Ecommerce\Calculator
      */
-    protected function calculateTax($tax_rate)
+    protected function calculateTax()
     {
-        $this->tax = (int) round($this->subtotal * $tax_rate);
+        $this->tax = (int) round($this->subtotal * $this->tax_rate);
 
         return $this;
     }
