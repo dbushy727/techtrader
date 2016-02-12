@@ -6,15 +6,8 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 use TechTrader\Models\Product;
 use TechTrader\Models\ProductImage;
 
-class ImageRepo
+class ImageRepo extends RepoMan
 {
-    /**
-     * ProductImage
-     *
-     * @var TechTrader\Models\ProductImage
-     */
-    protected $product_image;
-
     /**
      * Base Path for s3 product images
      *
@@ -29,7 +22,7 @@ class ImageRepo
      */
     public function __construct(ProductImage $product_image)
     {
-        $this->product_image = $product_image;
+        $this->model = $product_image;
     }
 
     /**
@@ -62,7 +55,7 @@ class ImageRepo
 
         $s3_path = $this->s3_basepath . '/product_images/' . $image['basename'];
 
-        $product_image = ProductImage::create([
+        $product_image = $this->model->create([
             'product_id' => $product->id,
             'path'       => $s3_path,
             'primary'    => $primary,
@@ -76,10 +69,8 @@ class ImageRepo
      *
      * @return array staged images
      */
-    public function getStagedImages()
+    public function getStagedImages(User $user)
     {
-        $user = \Auth::user();
-
         return \Storage::disk('local')->listContents("image_staging/{$user->id}");
     }
 
@@ -88,10 +79,8 @@ class ImageRepo
      *
      * @return TechTrader\Repos\ImageRepo
      */
-    public function clearStaging()
+    public function clearStaging(User $user)
     {
-        $user = \Auth::user();
-
         \Storage::disk('local')->deleteDir("/image_staging/{$user->id}");
 
         return $this;

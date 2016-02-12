@@ -56,6 +56,12 @@ class Calculator
         return $this;
     }
 
+    /**
+     * Calculate total tax due
+     *
+     * @param  float $tax_rate
+     * @return TechTrader\Ecommerce\Calculator
+     */
     protected function calculateTax($tax_rate)
     {
         $this->tax = $this->subtotal * $tax_rate;
@@ -63,13 +69,23 @@ class Calculator
         return $this;
     }
 
-    protected function calculateTotal($tax_rate)
+    /**
+     * Calculate total due
+     *
+     * @return TechTrader\Ecommerce\Calculator
+     */
+    protected function calculateTotal()
     {
         $this->total = $this->subtotal + $this->tax;
 
         return $this;
     }
 
+    /**
+     * Calculate all amounts
+     *
+     * @return TechTrader\Ecommerce\Calculator
+     */
     public function calculate()
     {
         return $this->calculateSubtotal()

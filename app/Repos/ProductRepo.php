@@ -12,13 +12,6 @@ use TechTrader\Repos\ImageRepo;
 class ProductRepo
 {
     /**
-     * Product
-     *
-     * @var TechTrader\Models\Product
-     */
-    protected $product;
-
-    /**
      * Image Repo
      *
      * @var TechTrader\Repos\ImageRepo
@@ -33,24 +26,22 @@ class ProductRepo
      */
     public function __construct(Product $product, ImageRepo $image_repo)
     {
-        $this->product = $product;
+        $this->model      = $product;
         $this->image_repo = $image_repo;
     }
 
     /**
-     * Save product with all necessary associations
+     * Save Product with all associations
      *
-     * @param  array  $data
-     *
-     * @return bool
+     * @param  User      $user
+     * @param  Category  $category
+     * @param  Condition $condition
+     * @param  array     $params
+     * @return TechTrader\Models\Product
      */
-    public function save(array $data)
+    public function save(User $user, Category $category, Condition $condition, array $params)
     {
-        $user       = \Auth::user();
-        $category   = Category::find(array_pull($data, 'category'));
-        $condition  = Condition::find(array_pull($data, 'condition'));
-
-        $product = new Product($data);
+        $product = new $this->model->firstOrNew($params);
 
         // Create product with a user and condition
         $product->user()
@@ -76,7 +67,9 @@ class ProductRepo
      */
     protected function attachImages(Product $product)
     {
-        $images = $this->image_repo->getStagedImages();
+        $user = $product->user;
+
+        $images = $this->image_repo->getStagedImages($user);
 
         $primary = (bool) !$product->images->count();
 
@@ -86,7 +79,7 @@ class ProductRepo
             $primary = 0;
         }
 
-        $this->image_repo->clearStaging();
+        $this->image_repo->clearStaging($user);
 
         return $this;
     }

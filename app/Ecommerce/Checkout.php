@@ -22,6 +22,13 @@ class Checkout
     protected $cart;
 
     /**
+     * Payment processor used to send payment
+     *
+     * @var TechTrader\Ecommerce\PaymentProcessor
+     */
+    protected $payment_processor;
+
+    /**
      * The current order
      *
      * @var TechTrader\Models\Order
@@ -34,6 +41,7 @@ class Checkout
      * @var TechTrader\Ecommerce\Calculator
      */
     protected $calculator;
+
     /**
      * Set the user, cart and payment_processor for checkout
      *
@@ -55,7 +63,7 @@ class Checkout
     public function checkout()
     {
         try {
-            $this->begin()
+            $this->beginOrder()
                 ->scanAllItems()
                 ->calculate()
                 ->processPayment()
@@ -142,6 +150,6 @@ class Checkout
 
     protected function processPayment()
     {
-        $this->payment_processor->charge($this->user, $this->calculator->getTotal());
+        $this->payment_processor->charge($this->order);
     }
 }
