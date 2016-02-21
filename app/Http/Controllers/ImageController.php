@@ -2,13 +2,11 @@
 
 namespace TechTrader\Http\Controllers;
 
-use Illuminate\Http\Request;
-use TechTrader\Http\Controllers\Controller;
-use TechTrader\Http\Requests;
+use TechTrader\Http\Controllers\Joystick;
 use TechTrader\Models\User;
 use TechTrader\Repos\ImageRepo;
 
-class ImageController extends Controller
+class ImageController extends Joystick
 {
     /**
      * Image Repo

@@ -2,15 +2,13 @@
 
 namespace TechTrader\Http\Controllers;
 
-use TechTrader\Http\Controllers\Controller;
-use TechTrader\Http\Requests;
+use TechTrader\Http\Controllers\Joystick;
 use TechTrader\Models\Cart;
 use TechTrader\Models\Product;
 use TechTrader\Models\User;
 use TechTrader\Repos\CartItemRepo;
-use Illuminate\Http\Request;
 
-class CartController extends Controller
+class CartController extends Joystick
 {
     /**
      * Cart Repo
@@ -34,24 +32,22 @@ class CartController extends Controller
         return $this->cart->find($cart_id);
     }
 
-    public function add($cart_id, $product_id)
+    public function addItem($cart_id, $product_id)
     {
         $this->cart->addItem($cart_id, $product_id);
 
         return redirect('/cart');
     }
 
-    public function reset()
-    {
-        $this->cart->reset();
-
-        return redirect('/cart');
-    }
-
-    public function delete($cart_item_id)
+    public function removeItem($cart_id, $product_id)
     {
         $this->cart->removeItem($cart_item_id);
 
         return redirect('/cart');
+    }
+
+    public function delete($cart_id)
+    {
+        $this->cart->delete($cart_id);
     }
 }

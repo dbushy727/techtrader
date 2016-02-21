@@ -49,6 +49,6 @@ class Cart extends Lima
      */
     public function isEmpty()
     {
-        return !$this->items()->count();
+        return $this->items->isEmpty();
     }
 }

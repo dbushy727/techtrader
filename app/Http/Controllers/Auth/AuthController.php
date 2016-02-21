@@ -2,13 +2,13 @@
 
 namespace TechTrader\Http\Controllers\Auth;
 
+use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
+use Illuminate\Foundation\Auth\ThrottlesLogins;
+use TechTrader\Http\Controllers\Joystick;
 use TechTrader\Models\User;
 use Validator;
-use TechTrader\Http\Controllers\Controller;
-use Illuminate\Foundation\Auth\ThrottlesLogins;
-use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 
-class AuthController extends Controller
+class AuthController extends Joystick
 {
     /*
     |--------------------------------------------------------------------------

@@ -2,18 +2,13 @@
 
 namespace TechTrader\Ecommerce;
 
+use TechTrader\Models\Cart;
 use TechTrader\Models\CartItem;
 use TechTrader\Models\User;
+use TechTrader\Repos\OrderRepo;
 
 class Checkout
 {
-    /**
-     * User that is checking out
-     *
-     * @var TechTrader\Models\User
-     */
-    protected $user;
-
     /**
      * Payment processor used to send payment
      *
@@ -22,130 +17,140 @@ class Checkout
     protected $payment_processor;
 
     /**
-     * The current order
+     * Order repo
      *
-     * @var TechTrader\Models\Order
+     * @var TechTrader\Repos\OrderRepo
      */
-    protected $order;
+    protected $order_repo;
 
     /**
-     * Calculator responsible for calculating amounts
+     * Order Item Repo
      *
-     * @var TechTrader\Ecommerce\Calculator
+     * @var TechTrader\Repos\OrderItemRepo
      */
-    protected $calculator;
+    protected $order_item_repo;
 
     /**
-     * Set the user, cart and payment_processor for checkout
+     * Set the payment_processor and repos for checkout
      *
-     * @param TechTrader\Models\User $user
-     * @param TechTrader\Models\Cart $cart
      * @param TechTrader\Models\PaymentProcessor $payment_processor
+     * @param TechTrader\Repo\OrderRepo          $order_repo
+     * @param TechTrader\Repo\OrderItemRepo      $order_item_repo
      */
-    public function __construct(User $user, PaymentProcessor $payment_processor)
-    {
-        $this->user              = $user;
+    public function __construct(
+        PaymentProcessor $payment_processor,
+        OrderRepo        $order_repo,
+        OrderItemRepo    $order_item_repo
+    ) {
         $this->payment_processor = $payment_processor;
+        $this->order_repo        = $order_repo;
+        $this->order_item_repo   = $order_item_repo;
+        $this->exceptions        = config('exceptions.ecommerce');
     }
 
     /**
      * Go through checkout process
      *
+     * @param  TechTrader\Models\User $user
      * @throws Exception
      * @return TechTrader\Ecommerce\Checkout
      */
-    public function checkout()
+    public function checkout(User $user)
     {
         try {
-            return $this->beginOrder()
-                ->scanAllItems()
-                ->calculate()
-                ->processPayment()
-                ->end();
+            $calculator = $this->calculate($user->cart);
+
+            $order = $this->createOrder(
+                $user->cart,
+                $calculator->getSubtotal(),
+                $calculator->getTax(),
+                $calculator->getTotal()
+            );
+
+            $this->processPayment($user, $order);
+
+            $this->broadcastEvent($user);
+
         } catch (\Exception $e) {
             return $e->getMessage();
         }
     }
 
     /**
-     * Begin the checkout process by starting an order
-     *
-     * @return TechTrader\Ecommerce\Checkout
-     */
-    protected function beginOrder()
-    {
-        if ($this->user->cart->isEmpty()) {
-            throw new \Exception('Cannot begin order with empty cart');
-        }
-
-        $this->order = $this->user->orders()->create([]);
-
-        return $this;
-    }
-
-    /**
-     * Scan cart item and attach it to order
-     *
-     * @param  CartItem $cart_item [description]
-     * @return TechTrader\Ecommerce\Checkout
-     */
-    protected function scan(CartItem $cart_item)
-    {
-        $this->order->items()->create([
-            'product_id' => $cart_item->product->id,
-        ]);
-
-        return $this;
-    }
-
-    /**
-     * Scan all the items currently in the cart
-     *
-     * @return TechTrader\Ecommerce\Checkout
-     */
-    protected function scanAllItems()
-    {
-        foreach ($this->user->cart->items as $cart_item) {
-            $this->scan($cart_item);
-        }
-
-        return $this;
-    }
-
-    /**
      * Calculate the amounts for the checkout process
      *
+     * @param  TechTrader\Models\Cart $cart
      * @return TechTrader\Ecommerce\Checkout
      */
-    protected function calculate()
+    protected function calculate(Cart $cart)
     {
-        $this->calculator = new Calculator($this->user->cart);
+        $calculator = app('TechTrader\Ecommerce\Calculator', [$cart]);
 
-        $this->calculator->calculate();
+        $calculator->calculate();
 
-        return $this;
+        return $calculator;
     }
 
     /**
      * Update the order with the correct totals
      *
-     * @return TechTrader\Ecommerce\Checkout
+     * @param  TechTrader\Models\Cart   $cart
+     * @param  int                      $subtotal
+     * @param  int                      $tax
+     * @param  int                      $total
+     * @return TechTrader\Models\Order
      */
-    protected function updateOrder()
+    protected function createOrder(Cart $cart, $subtotal, $tax, $total)
     {
-        $subtotal   = $this->calculator->getSubtotal();
-        $tax        = $this->calculator->getTax();
-        $total      = $this->calculator->getTotal();
+        if ($cart->isEmpty()) {
+            throw new \Exception(array_get($this->exceptions, 'empty_cart'));
+        }
 
-        $this->order->update(compact('subtotal', 'tax', 'total'));
+        $order =  $this->order_repo->create([
+            'user_id' => $cart->user->id,
+            'subtotal' => $subtotal,
+            'tax' => $tax,
+            'total' => $total,
+        ]);
 
-        return $this;
+        foreach ($cart->items as $cart_item) {
+            $this->order_item_repo->create([
+                'order_id' => $order->id,
+                'product_id' => $cart_item->product->id
+            ]);
+        }
+
+        return $order;
     }
 
-    protected function processPayment()
+    /**
+     * Process the payment of the order
+     *
+     * @param  User  $user
+     * @param  Order  $order
+     * @return bool
+     */
+    protected function processPayment(User $user, Order $order)
     {
-        $this->payment_processor->charge($this->order);
+        if (!$order->total) {
+            throw new \Exception(array_get($this->exceptions, 'missing_total'));
+        }
 
-        return $this;
+        $payment = $this->payment_processor->charge($user, [
+            'amount' => $order->total,
+        ]);
+
+        if (!$payment) {
+            throw new \Exception(array_get($this->exceptions, 'payment_failed'));
+        }
+
+        return $this->order_repo->setToPaid($order->id);
+    }
+
+    protected function broadcastEvent(User $user)
+    {
+        return event('user.checkout.completed', [
+            'user_id' => $user->id,
+        ]);
     }
 }

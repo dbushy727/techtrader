@@ -32,4 +32,31 @@ abstract class RepoMan
     {
         return $this->find($id)->delete();
     }
+
+    /**
+     * Create and persist model instance
+     *
+     * @param  array  $params
+     * @return object
+     */
+    public function create(array $params)
+    {
+        return $this->model->create($params);
+    }
+
+    /**
+     * Update and return model instance
+     *
+     * @param  int    $id
+     * @param  array  $params
+     * @return object
+     */
+    public function update($id, array $params)
+    {
+        $model = $this->find($id);
+
+        $model->update($params);
+
+        return $model;
+    }
 }

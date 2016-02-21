@@ -14,7 +14,7 @@ class Order extends Lima
         'subtotal',
         'tax',
         'total',
-        'paid',
+        'is_paid',
     ];
 
     /**

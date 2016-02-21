@@ -2,14 +2,12 @@
 
 namespace TechTrader\Http\Controllers;
 
-use Illuminate\Http\Request;
-use TechTrader\Http\Controllers\Controller;
-use TechTrader\Http\Requests;
+use TechTrader\Http\Controllers\Joystick;
 use TechTrader\Models\Category;
 use TechTrader\Models\Product;
 use TechTrader\Models\User;
 
-class UserController extends Controller
+class UserController extends Joystick
 {
     public function home()
     {

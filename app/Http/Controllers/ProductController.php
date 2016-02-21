@@ -2,17 +2,13 @@
 
 namespace TechTrader\Http\Controllers;
 
-use Illuminate\Http\Request;
-
-use TechTrader\Http\Requests;
-use TechTrader\Http\Requests\ProductRequest;
-use TechTrader\Http\Controllers\Controller;
-use TechTrader\Models\Product;
+use TechTrader\Http\Controllers\Joystick;
 use TechTrader\Models\Category;
 use TechTrader\Models\Condition;
+use TechTrader\Models\Product;
 use TechTrader\Repos\ProductRepo;
 
-class ProductController extends Controller
+class ProductController extends Joystick
 {
     /**
      * Product Repo

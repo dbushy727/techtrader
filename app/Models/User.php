@@ -82,9 +82,9 @@ class User extends Lima implements AuthenticatableContract,
      *
      * @return Illuminate\Database\Eloquent\Collection
      */
-    public function carts()
+    public function cart()
     {
-        return $this->hasMany('TechTrader\Models\Cart');
+        return $this->hasOne('TechTrader\Models\Cart');
     }
 
     /**

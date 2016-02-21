@@ -2,6 +2,8 @@
 
 namespace TechTrader\Repos;
 
+use TechTrader\Models\Order;
+
 class OrderRepo extends RepoMan
 {
     public function __construct(Order $order)
@@ -17,6 +19,6 @@ class OrderRepo extends RepoMan
      */
     public function setToPaid($order_id)
     {
-        return $this->find($order_id)->update(['paid' => 1]);
+        return $this->update($order_id, ['is_paid' => 1]);
     }
 }

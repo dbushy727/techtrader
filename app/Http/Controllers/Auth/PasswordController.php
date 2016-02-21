@@ -2,10 +2,10 @@
 
 namespace TechTrader\Http\Controllers\Auth;
 
-use TechTrader\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ResetsPasswords;
+use TechTrader\Http\Controllers\Joystick;
 
-class PasswordController extends Controller
+class PasswordController extends Joystick
 {
     /*
     |--------------------------------------------------------------------------

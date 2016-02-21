@@ -24,4 +24,19 @@ class TestBase extends \Illuminate\Foundation\Testing\TestCase
 
         return $app;
     }
+
+    public function setUp()
+    {
+        parent::setUp();
+
+        // Start a transaction so no tests actually affect database
+        \DB::beginTransaction();
+        \DB::connection()->disableQueryLog();
+    }
+
+    public function tearDown()
+    {
+        // When tests finish, rollback all queries
+        \DB::rollback();
+    }
 }

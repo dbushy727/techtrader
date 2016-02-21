@@ -49,24 +49,20 @@ class Calculator
      */
     public function __construct(Cart $cart, $tax_rate = 0.00)
     {
-        $this->cart     = $cart;
-        $this->tax_rate = $tax_rate;
+        $this->cart         = $cart;
+        $this->tax_rate     = $tax_rate;
+        $this->exceptions   = config('exceptions.ecommerce');
     }
 
     /**
      * Calculate the combined subtotal of all the
-     * order items before any other calculations
+     * cart items before any other calculations
      *
      * @return TechTrader\Ecommerce\Checkout
      */
     protected function calculateSubtotal()
     {
-        // Reset subtotal
-        $this->subtotal = 0;
-
-        foreach ($this->cart->items as $cart_item) {
-            $this->subtotal += $cart_item->product->price;
-        }
+        $this->subtotal = $this->cart->items->sum('product.price');
 
         return $this;
     }
@@ -104,7 +100,7 @@ class Calculator
     public function calculate()
     {
         if ($this->cart->isEmpty()) {
-            return new \Exception('Cannot calculate when cart is empty');
+            throw new \Exception(array_get($this->exceptions, 'empty_cart'));
         }
 
         return $this->calculateSubtotal()
