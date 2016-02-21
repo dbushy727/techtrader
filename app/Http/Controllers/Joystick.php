@@ -2,9 +2,9 @@
 
 namespace TechTrader\Http\Controllers;
 
+use Illuminate\Http\Request;
 use TechTrader\Http\Controllers\Controller;
 use TechTrader\Http\Requests;
-use TechTrader\Http\Requests\Request;
 
 class Joystick extends Controller
 {
