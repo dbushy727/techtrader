@@ -3,7 +3,6 @@
 namespace TechTrader\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use TechTrader\Http\Controllers\Controller;
 use TechTrader\Http\Requests;
 
