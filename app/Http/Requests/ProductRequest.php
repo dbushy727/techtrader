@@ -2,9 +2,7 @@
 
 namespace TechTrader\Http\Requests;
 
-use TechTrader\Http\Requests\Request;
-
-class ProductRequest extends Request
+class ProductRequest extends BaseRequest
 {
     /**
      * Determine if the user is authorized to make this request.
