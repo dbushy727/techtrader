@@ -8,5 +8,8 @@ use TechTrader\Http\Requests;
 
 class Joystick extends Controller
 {
-    public function __construct(Request $requesat)
+    public function __construct(Request $request)
+    {
+        $this->request = $request;
+    }
 }
