@@ -7,7 +7,7 @@ use Illuminate\Queue\InteractsWithQueue;
 use TechTrader\Events\ProductWasPurchased;
 use TechTrader\Models\Notification;
 
-class NotifyUser implements ShouldQueue
+class NotifyUser
 {
     /**
      * Create the event listener.

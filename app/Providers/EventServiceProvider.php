@@ -15,6 +15,7 @@ class EventServiceProvider extends ServiceProvider
     protected $listen = [
         'TechTrader\Events\ProductWasPurchased' => [
             'TechTrader\Listeners\NotifyUser',
+            'TechTrader\Listeners\SendPurchaseEmail',
         ],
     ];
 
