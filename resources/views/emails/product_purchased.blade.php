@@ -1,0 +1,1 @@
+<h3>Congrats: {{ $product->title }} was purchased.</h3>
