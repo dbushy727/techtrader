@@ -2,7 +2,6 @@
 
 namespace TechTrader\Http\Controllers;
 
-use TechTrader\Http\Controllers\Joystick;
 use TechTrader\Models\User;
 use TechTrader\Repos\ImageRepo;
 

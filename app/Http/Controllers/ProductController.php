@@ -2,7 +2,6 @@
 
 namespace TechTrader\Http\Controllers;
 
-use TechTrader\Http\Controllers\Joystick;
 use TechTrader\Models\Category;
 use TechTrader\Models\Condition;
 use TechTrader\Models\Product;
